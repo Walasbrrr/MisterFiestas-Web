@@ -1,14 +1,61 @@
-<div align="center">
-
 # 🎉 Mister Fiesta
 
-### Premium Event Services Platform
+> **Creating unforgettable experiences.**
+>
+> **Creando experiencias inolvidables.**
 
-Creating unforgettable experiences.
+---
 
-![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss)
-![License](https://img.shields.io/badge/License-Private-red?style=for-the-badge)
+## 🇺🇸 English
 
-</div>
+Mister Fiesta is a modern web platform designed to showcase premium event services, simplify online bookings, and provide a seamless experience for both private customers and corporate clients.
+
+The platform focuses on performance, accessibility, responsive design, and an elegant user experience while offering an integrated e-commerce solution for event packages and services.
+
+### Features
+
+- ✨ Modern and responsive UI
+- 🎈 Event service catalog
+- 🏢 Corporate solutions
+- 👨‍👩‍👧 Customer event planning
+- 🛒 E-commerce
+- 📅 Booking & quotation requests
+- 📱 Mobile-first experience
+- 🚀 Optimized performance
+
+---
+
+## 🇪🇸 Español
+
+Mister Fiesta es una plataforma web moderna diseñada para presentar servicios profesionales para eventos, facilitar reservas en línea y ofrecer una experiencia intuitiva tanto para clientes particulares como para empresas.
+
+La plataforma está enfocada en el rendimiento, la accesibilidad, el diseño responsive y una experiencia premium, integrando además un sistema de comercio electrónico para paquetes y servicios.
+
+### Características
+
+- ✨ Interfaz moderna y responsiva
+- 🎈 Catálogo de servicios
+- 🏢 Soluciones para empresas
+- 👨‍👩‍👧 Organización de eventos
+- 🛒 Comercio electrónico
+- 📅 Reservas y cotizaciones
+- 📱 Diseño Mobile First
+- 🚀 Alto rendimiento
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- React Hook Form
+- Zod
+
+---
+
+## 📌 Status
+
+🚧 Currently under development.
