@@ -23,4 +23,3 @@ Abre `http://localhost:3000`.
 - `Documentation/`: producto, diseño, equipo y decisiones técnicas.
 
 La documentación comienza en [Documentation/README.md](Documentation/README.md).
-

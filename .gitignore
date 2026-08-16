@@ -5,4 +5,5 @@ out/
 !.env.example
 *.log
 .DS_Store
+.obsidian/
 
