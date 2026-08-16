@@ -7,6 +7,7 @@ existan realmente un panel administrativo, una API u otro consumidor compartido.
 
 ```text
 mister-fiestas/
+├── backend/            # API Spring Boot cuando comience su implementación
 ├── Documentation/
 ├── public/
 │   └── images/
@@ -20,8 +21,8 @@ mister-fiestas/
 └── README.md
 ```
 
-## Evolución posible
+## Evolución prevista
 
-Cuando aparezca una segunda aplicación real, se puede migrar a un workspace con
-`apps/web`, `apps/admin` y paquetes compartidos. La API debe añadirse cuando los
-requisitos dinámicos justifiquen mantener un servicio independiente.
+El frontend permanece en la raíz durante el MVP y `backend/` queda reservado para
+Spring Boot. Cuando exista un panel real, se evaluará mover el frontend a `apps/web`
+y crear `apps/admin`; no hace falta anticipar esa migración.

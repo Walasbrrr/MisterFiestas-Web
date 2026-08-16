@@ -23,3 +23,12 @@ Abre `http://localhost:3000`.
 - `Documentation/`: producto, diseño, equipo y decisiones técnicas.
 
 La documentación comienza en [Documentation/README.md](Documentation/README.md).
+
+## Configuración
+
+```bash
+cp .env.example .env.local
+```
+
+Completa solo las integraciones que se vayan activando. Las claves privadas de pagos
+y autenticación pertenecen al backend, nunca al navegador.

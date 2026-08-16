@@ -26,4 +26,3 @@ Fiestas y genere solicitudes de cotización calificadas por WhatsApp o formulari
 
 Un visitante entiende la oferta, confía en el negocio y puede enviar una solicitud
 con fecha, ubicación, tipo de evento, invitados, servicios y presupuesto.
-

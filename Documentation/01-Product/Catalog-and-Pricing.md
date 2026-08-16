@@ -28,4 +28,3 @@ condiciones o fotografías inventadas.
 - [ ] Registrar los paquetes reales.
 - [ ] Aprobar precios y condiciones.
 - [ ] Seleccionar fotografías para cada servicio.
-
