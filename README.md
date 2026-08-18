@@ -1,4 +1,4 @@
-# Mister Fiestas
+# MisterFiestas
 
 Sitio web oficial de Mister Fiestas. El objetivo inicial es presentar la oferta
 real del negocio y convertir visitas en solicitudes de cotización calificadas.
