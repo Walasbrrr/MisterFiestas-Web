@@ -6,7 +6,7 @@ integrante.
 | Persona   | Área responsable                                                    |
 | --------- | ------------------------------------------------------------------- |
 | Walen     | Dirección técnica, repositorio, Next.js, integraciones y despliegue |
-| Sebastian | Identidad visual, wireframes, experiencia móvil y animaciones       |
+| Sebastian | Arquitectura de datos, lógica core, base de datos (SQL Server)      |
 | Mario     | Servicios, paquetes, precios, textos y material audiovisual         |
 | David     | Requisitos del negocio, pruebas, revisión y proceso de atención     |
 

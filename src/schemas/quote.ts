@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+/**
+ * Zod schema for QuoteRequests.
+ * @see ../../Documentation/04-Architecture/Data-Model.md for the conceptual model.
+ * @see ../../Documentation/04-Architecture/API-Contract.md for the API endpoint definition.
+ */
 export const quoteSchema = z.object({
   name: z.string().trim().min(2, "Escribe tu nombre."),
   phone: z.string().trim().min(8, "Escribe un teléfono válido."),

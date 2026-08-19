@@ -1,5 +1,10 @@
 import type { Service } from "@/types/service";
 
+/**
+ * Array of services offered by MisterFiestas.
+ * @see ../../../Documentation/01-Product/Catalog-and-Pricing.md for the source of truth
+ * and pending confirmations for this data.
+ */
 export const services: Service[] = [
   {
     slug: "decoracion",

@@ -1,9 +1,24 @@
-# Catálogo y precios
+# Catálogo y Precios
 
-Completar con información aprobada de la operación actual. No publicar precios,
-condiciones o fotografías inventadas.
+Este documento refleja la oferta de servicios de MisterFiestas. **Importante:** Solo se publicará información aprobada de la operación actual. No publicar precios, condiciones o fotografías inventadas.
 
-## Datos por servicio
+## Catálogo de Servicios Actual (Draft)
+
+La siguiente tabla lista los servicios identificados y el estado de la información necesaria para publicarlos.
+
+| Servicio                 | Descripción              | Incluye / Duración | Precio      | Capacidad / Cobertura | Foto Disponible |
+| :----------------------- | :----------------------- | :----------------- | :---------- | :-------------------- | :-------------- |
+| **Decoración**           | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **DJ**                   | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **Animación**            | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **Catering**             | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **Photobooth**           | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **Inflables**            | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+| **Sonido e iluminación** | [Pendiente de redacción] | [Pendiente]        | [Pendiente] | [Pendiente]           | [ ] No          |
+
+## Datos Requeridos por Servicio
+
+Para cada servicio (individual o paquete) necesitamos confirmar la siguiente estructura:
 
 - Nombre y descripción breve.
 - Qué incluye y duración.
@@ -12,19 +27,9 @@ condiciones o fotografías inventadas.
 - Adicionales disponibles.
 - Fotografías propias autorizadas.
 
-## Servicios identificados
+## Tareas Pendientes con el Cliente
 
-- Decoración.
-- DJ.
-- Animación.
-- Catering.
-- Photobooth.
-- Inflables.
-- Sonido e iluminación.
-
-## Pendiente
-
-- [ ] Confirmar cuáles servicios están activos actualmente.
-- [ ] Registrar los paquetes reales.
-- [ ] Aprobar precios y condiciones.
-- [ ] Seleccionar fotografías para cada servicio.
+- [ ] Confirmar cuáles de los servicios listados arriba están activos actualmente.
+- [ ] Registrar los combos/paquetes reales que ofrecen.
+- [ ] Aprobar precios y condiciones para cada servicio/paquete.
+- [ ] Seleccionar y proporcionar fotografías para cada servicio.
