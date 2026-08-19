@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { Geist } from "next/font/google";
+import { Archivo_Narrow, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const archivoNarrow = Archivo_Narrow({
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -35,7 +39,10 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es" className={cn("font-sans", geist.variable)}>
+    <html
+      lang="es"
+      className={cn("font-sans", geist.variable, archivoNarrow.variable)}
+    >
       <body>
         <script
           type="application/ld+json"

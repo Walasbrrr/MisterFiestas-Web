@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2200" viewBox="0 0 1440 2200">
+  <defs>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#20251a"/><stop offset=".55" stop-color="#10110f"/><stop offset="1" stop-color="#070707"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="38"/></filter>
+    <style>
+      .display{font-family:'Archivo Black',Arial Black,sans-serif;font-weight:900}.body{font-family:Geist,Arial,sans-serif}.label{font-family:Geist,Arial,sans-serif;font-weight:800;letter-spacing:2px}.muted{fill:#765f57}.bone{fill:#392d2a}.line{stroke:#d8ad94;stroke-width:2}.card{fill:#fff8f0;stroke:#d8ad94;stroke-width:2}.small{font-size:18px}.copy{font-size:24px}
+      rect[fill="#070707"]{fill:#f1d3ba}text[fill="#070707"],path[fill="#070707"]{fill:#392d2a}[fill="#f4f0e8"]{fill:#fff8f0}[fill="#ff5a36"]{fill:#ec6d20}text[fill="#ff5a36"]{fill:#d72b2d}
+      [fill="#11100f"],[fill="#151311"],[fill="#181615"],[fill="#181312"],[fill="#101314"],[fill="#171510"]{fill:#fff8f0}[fill="#baff21"]{fill:#d72b2d}[fill="#ffca58"]{fill:#e4a15c}[fill="#43cadc"]{fill:#d8a99e}
+      [stroke="#baff21"]{stroke:#d72b2d}[stroke="#f4f0e8"]{stroke:#fff8f0}
+      g[transform="translate(96 665)"] .bone{fill:#fff8f0}
+    </style>
+  </defs>
+  <rect width="1440" height="2200" fill="#070707"/>
+  <circle cx="1250" cy="110" r="220" fill="#baff21" opacity=".12" filter="url(#glow)"/>
+  <rect x="96" y="76" width="10" height="170" rx="5" fill="#ff5a36"/>
+  <text x="142" y="108" class="label" font-size="15" fill="#baff21">DESIGN SYSTEM · COMPONENTS · V1</text>
+  <text x="142" y="177" class="display bone" font-size="66">LA FIESTA,</text><text x="142" y="240" class="display" font-size="66" fill="#ff5a36">SISTEMATIZADA.</text>
+  <text x="142" y="290" class="body muted" font-size="21">Bloques compactos, expresivos y listos para una experiencia de cotización rápida.</text>
+
+  <text x="96" y="390" class="label" font-size="15" fill="#ff5a36">01 / ACCIONES</text>
+  <rect x="96" y="425" width="318" height="72" rx="36" fill="#ff5a36"/><text x="147" y="470" class="label" font-size="17" fill="#070707">COTIZAR MI EVENTO ↗</text>
+  <rect x="438" y="425" width="270" height="72" rx="36" fill="none" stroke="#f4f0e8" stroke-width="2"/><text x="488" y="470" class="label bone" font-size="17">VER SERVICIOS</text>
+  <rect x="732" y="425" width="240" height="72" rx="36" fill="#baff21"/><text x="776" y="470" class="label" font-size="17" fill="#070707">HABLAR AHORA</text>
+  <circle cx="1030" cy="461" r="36" fill="#181615" stroke="#3a3434" stroke-width="2"/><text x="1017" y="472" class="display bone" font-size="32">↗</text>
+
+  <line x1="96" y1="560" x2="1344" y2="560" class="line"/>
+  <text x="96" y="625" class="label" font-size="15" fill="#ff5a36">02 / SERVICE CARDS</text>
+  <g transform="translate(96 665)">
+    <rect width="598" height="420" rx="28" fill="url(#hero)" stroke="#34302d" stroke-width="2"/>
+    <circle cx="470" cy="90" r="150" fill="#baff21" opacity=".15" filter="url(#glow)"/>
+    <rect x="30" y="28" width="162" height="34" rx="17" fill="#f4f0e8"/><text x="51" y="51" class="label" font-size="12" fill="#070707">MÁS RENTABLE</text>
+    <path d="M310 88h180v180H310zM337 115h126v126H337zM363 141h74v74h-74z" fill="none" stroke="#baff21" stroke-width="8" opacity=".9"/>
+    <text x="30" y="310" class="display bone" font-size="48">TÚNEL</text><text x="30" y="354" class="display" font-size="48" fill="#baff21">INFINITO</text>
+    <text x="30" y="389" class="body muted" font-size="18">Una entrada que transforma cualquier celebración.</text>
+  </g>
+  <g transform="translate(726 665)">
+    <rect width="618" height="420" rx="28" class="card"/>
+    <rect x="0" y="0" width="618" height="240" rx="28" fill="#231615"/><circle cx="470" cy="95" r="78" fill="#ffca58" opacity=".9"/><path d="M70 215l120-135 92 92 70-78 120 121z" fill="#0d0c0c"/>
+    <rect x="28" y="28" width="132" height="34" rx="17" fill="#ff5a36"/><text x="49" y="51" class="label" font-size="12" fill="#070707">FAVORITO</text>
+    <text x="30" y="310" class="display bone" font-size="44">MARIACHIS</text><text x="30" y="352" class="body muted" font-size="18">El momento que todos cantan y recuerdan.</text>
+    <text x="30" y="393" class="label" font-size="13" fill="#ff5a36">DESCUBRIR SERVICIO ↗</text>
+  </g>
+
+  <line x1="96" y1="1150" x2="1344" y2="1150" class="line"/>
+  <text x="96" y="1215" class="label" font-size="15" fill="#ff5a36">03 / QUOTE CONTROLS</text>
+  <g transform="translate(96 1255)">
+    <rect width="1248" height="320" rx="28" class="card"/>
+    <text x="34" y="48" class="label" font-size="13" fill="#baff21">PASO 01 DE 04</text><text x="34" y="105" class="display bone" font-size="42">¿PARA QUIÉN ES EL EVENTO?</text>
+    <rect x="34" y="143" width="360" height="116" rx="18" fill="#ff5a36"/><circle cx="82" cy="201" r="23" fill="#070707"/><text x="121" y="195" class="label" font-size="16" fill="#070707">PERSONAL</text><text x="121" y="224" class="body" font-size="17" fill="#2c1711">Cumpleaños, bodas y reuniones.</text>
+    <rect x="418" y="143" width="360" height="116" rx="18" fill="#181615" stroke="#494242" stroke-width="2"/><circle cx="466" cy="201" r="23" fill="#baff21"/><text x="505" y="195" class="label bone" font-size="16">EMPRESA</text><text x="505" y="224" class="body muted" font-size="17">Activaciones y eventos B2B.</text>
+    <rect x="1000" y="178" width="206" height="64" rx="32" fill="#f4f0e8"/><text x="1042" y="218" class="label" font-size="15" fill="#070707">CONTINUAR →</text>
+  </g>
+
+  <text x="96" y="1655" class="label" font-size="15" fill="#ff5a36">04 / TRUST &amp; STATUS</text>
+  <g transform="translate(96 1695)">
+    <rect width="390" height="116" rx="20" fill="#151311"/><circle cx="55" cy="58" r="24" fill="#baff21"/><path d="M44 58l8 8 16-19" fill="none" stroke="#070707" stroke-width="5"/><text x="96" y="50" class="label bone" font-size="15">SOLICITUD RECIBIDA</text><text x="96" y="79" class="body muted" font-size="17">Te contactaremos para confirmar.</text>
+    <rect x="420" width="390" height="116" rx="20" fill="#151311"/><circle cx="475" cy="58" r="24" fill="#ffca58"/><text x="468" y="66" class="display" font-size="22" fill="#070707">!</text><text x="516" y="50" class="label bone" font-size="15">FUERA DE SANTO DOMINGO</text><text x="516" y="79" class="body muted" font-size="17">Puede aplicar cargo de traslado.</text>
+    <rect x="840" width="408" height="116" rx="20" fill="#151311"/><text x="870" y="48" class="label" font-size="13" fill="#43cadc">EMPRESAS</text><text x="870" y="82" class="display bone" font-size="26">RNC + FACTURA</text>
+  </g>
+  <line x1="96" y1="1890" x2="1344" y2="1890" class="line"/>
+  <text x="96" y="1950" class="label" font-size="15" fill="#ff5a36">05 / PRINCIPIO</text>
+  <text x="96" y="2024" class="display bone" font-size="51">MENOS FRICCIÓN.</text><text x="580" y="2024" class="display" font-size="51" fill="#baff21">MÁS EMOCIÓN.</text>
+  <text x="96" y="2072" class="body muted" font-size="21">Cada componente guía hacia una cotización clara sin apagar la energía de la marca.</text>
+</svg>
