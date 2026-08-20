@@ -15,7 +15,7 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 ### Infraestructura y CI
 
 - **GitHub Actions:** Configuración del pipeline de CI en `.github/workflows/ci.yml` para ejecutar `lint`, `typecheck`, `format:check` y `build` en cada PR y push a `main`. `next typegen` corre antes del typecheck para generar `.next/types/routes.d.ts` en runners limpios.
-- **Entorno de CI:** Uso de Node.js 20 y pnpm 11.3.0 (alineados con `package.json`), con caché de dependencias y `HUSKY=0` para evitar hooks de git en el runner.
+- **Entorno de CI:** Uso de Node.js 22.13 y pnpm 11.3.0 (alineados con `package.json`), con caché de dependencias y `HUSKY=0` para evitar hooks de git en el runner.
 - **Protección de ramas:** Reglas activas en `main` que bloquean push directo y exigen al menos 1 aprobación en PRs antes de merge.
 
 ### Flujo de trabajo Git
