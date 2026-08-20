@@ -25,3 +25,9 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 - **Push inicial:** Corregido a `git push -u origin HEAD` (o nombre explícito de rama); `-u` solo no basta.
 - **Contribución:** `CONTRIBUTING.md` incluye el ciclo rápido, el push correcto y `next typegen` antes del typecheck local.
 - **Índices:** El flujo diario quedó enlazado en `Documentation/README.md`, `Documentación del Proyecto.md` y las convenciones de `Git-Workflow.md`.
+
+### Decisiones de Producto y Equipo
+
+- **Definición de MVP (Pagos y Reservas):** Se acordó que no habrá cálculo automático de traslados. Se integrará una opción de pago en la web, además de la opción de coordinar pagos vía WhatsApp con el dueño. El tiempo de anticipación mínimo para reservar será de 72 horas. Aún está en discusión si se requerirá un porcentaje de pago por adelantado para asegurar la reserva.
+- **Gestión B2B y Solicitudes:** Las solicitudes del formulario enviarán al usuario directamente al WhatsApp de la empresa para entablar conversación inmediata. Los clientes corporativos no requerirán datos adicionales aparte de Nombre de Empresa y RNC.
+- **Ajuste de Roles:** Se redefinió el rol de Walen a _Tech Lead & Full Stack Developer_ (abarcando de forma transversal todas las áreas) y se enfocó el perfil de Sebastián exclusivamente a _Arquitectura de Datos y Lógica Core_, removiendo sus tareas visuales y móviles.

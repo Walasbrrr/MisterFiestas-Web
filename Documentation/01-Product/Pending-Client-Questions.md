@@ -1,23 +1,24 @@
-# Preguntas Pendientes para el Cliente (MisterFiestas)
+# Decisiones y Respuestas del Cliente (MisterFiestas)
 
-Para definir la lógica exacta de la base de datos y los flujos, es necesario aclarar estos puntos en la próxima reunión con el dueño:
+Este documento registra las respuestas y decisiones clave tomadas por el cliente sobre el modelo de negocio y los flujos operativos.
 
 1. **Cálculo de traslados a provincias:**
-   - _Pregunta:_ ¿Tienen una tabla de precios fijos por provincia (ej. Santiago cuesta $X, Punta Cana$Y) o el recargo se calcula bajo otra métrica?
-   - _Respuesta:_ [Pendiente]
+   - _Decisión:_ No habrá un cálculo o tarifa automatizada en la web. El precio de traslado se negocia directamente hablando con el cliente.
 
-2. **Enlaces de pago:**
-   - _Pregunta:_ ¿Qué plataforma utilizan actualmente para generar esos links (Azul, PayPal, transferencias de bancos locales)? (Útil para prever futuras integraciones).
-   - _Respuesta:_ [Pendiente]
+2. **Opciones de Pago:**
+   - _Decisión:_ Se integrará la opción de **pagar directamente a través de la página web**. Adicionalmente, existirá una alternativa para que el cliente sea redirigido a WhatsApp y gestione el pago directamente con el dueño.
 
-3. **Tiempo de anticipación:**
-   - _Pregunta:_ ¿Con cuántos días u horas de anticipación mínima debe un cliente reservar en la web para garantizar disponibilidad?
-   - _Respuesta:_ [Pendiente]
+3. **Tiempo de anticipación para reservas:**
+   - _Decisión:_ El tiempo mínimo de anticipación para reservar una actividad a través de la web es de **72 horas**.
 
-4. **Gestión de las solicitudes:**
-   - _Pregunta:_ Cuando un cliente termine de llenar el formulario en la web, ¿dónde desea recibir la alerta? (¿Un correo específico, un número de WhatsApp, o un panel administrador básico en la web?).
-   - _Respuesta:_ [Pendiente]
+4. **Gestión de las solicitudes (Cotizaciones):**
+   - _Decisión:_ El cliente prefiere que el formulario web envíe la solicitud directamente a su número de WhatsApp para entablar una conversación directa.
 
-5. **Requisitos para clientes B2B:**
-   - _Pregunta:_ Además del RNC y Nombre de la Empresa, ¿hay algún otro dato obligatorio para clientes corporativos?
-   - _Respuesta:_ [Pendiente]
+5. **Requisitos para clientes corporativos (B2B):**
+   - _Decisión:_ No se requieren datos adicionales. El "Nombre de la Empresa" y el "RNC" son suficientes.
+
+---
+
+## Temas en Discusión (Pendientes de confirmar)
+
+- **Condiciones de Reservación:** Aún está en discusión si se exigirá el pago de un porcentaje por adelantado para asegurar la reserva y si se establecerá un tiempo límite para realizar dicho pago.
