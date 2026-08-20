@@ -21,8 +21,8 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 > **Responsable principal:** Walen
 
 - [x] Crear repositorio remoto en GitHub y conectar el proyecto local (`chore/setup-github-remote`)
-- [ ] Configurar ramas protegidas: bloquear push directo a `main`, requerir al menos 1 aprobación en PRs (`chore/branch-protection-rules`)
-- [ ] Configurar CI básico con GitHub Actions: ejecutar `pnpm lint`, `pnpm typecheck` y `pnpm format:check` en cada PR (`chore/setup-ci-pipeline`)
+- [x] Configurar ramas protegidas: bloquear push directo a `main`, requerir al menos 1 aprobación en PRs (`chore/branch-protection-rules`)
+- [x] Configurar CI básico con GitHub Actions: ejecutar `pnpm lint`, `pnpm typecheck` y `pnpm format:check` en cada PR (`chore/setup-ci-pipeline`)
 - [ ] Verificar que `husky` + `lint-staged` funcionan correctamente en todos los equipos del equipo (`chore/verify-precommit-hooks`)
 - [ ] Configurar archivo `.env.local` en cada máquina del equipo a partir de `.env.example` (`chore/setup-env-local`)
 - [ ] Crear tablero de proyecto en GitHub Projects o Jira y vincular las tareas de este documento (`chore/setup-project-board`)
