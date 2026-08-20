@@ -27,8 +27,8 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 
 ### En curso
 
-- [ ] Configurar ruleset en **`dev`**: push solo con checks de CI en verde (`chore/dev-branch-ruleset`)
-- [ ] Configurar permisos en **`main`**: push directo solo para Walen (`chore/main-maintainer-role`)
+- [x] Configurar ruleset en **`dev`**: push solo con checks de CI en verde (`chore/dev-branch-ruleset`)
+- [x] Configurar permisos en **`main`**: push directo solo para Walen (`chore/main-maintainer-role`)
 
 ### Más adelante (no activo por ahora)
 
