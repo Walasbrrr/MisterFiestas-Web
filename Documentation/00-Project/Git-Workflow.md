@@ -7,10 +7,11 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 ## Convenciones
 
 - Cada tarea corresponde a **una rama Git** independiente.
-- Las ramas se crean siempre desde `main`.
+- Las ramas se crean siempre desde `main` con `git switch -c`.
 - Al terminar una tarea, se abre un **Pull Request** hacia `main` y se asigna un revisor.
 - Solo se hace merge a `main` cuando el PR está aprobado y los checks pasan.
 - El nombre de rama sigue el formato indicado entre paréntesis en cada tarea.
+- Comandos del día a día: [Flujo Diario de Git](Git-Daily-Flow.md).
 
 ---
 

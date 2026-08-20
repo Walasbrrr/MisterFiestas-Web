@@ -12,6 +12,8 @@ Toda la documentación detallada del proyecto se ha dividido en secciones espec�
   - [Visión General y Estado](00-Project/Project-Overview.md)
   - [Alcance del MVP](00-Project/MVP-Scope.md)
   - [Bitácora de Progreso (Changelog)](00-Project/Changelog.md)
+  - [Flujo Diario de Git](00-Project/Git-Daily-Flow.md)
+  - [Flujo de Trabajo Git (Roadmap por Fases)](00-Project/Git-Workflow.md)
 - **Producto y Negocio:**
   - [Glosario de Negocio](01-Product/Business-Glossary.md)
   - [Mapa del Sitio (Sitemap)](01-Product/Site-Map.md)
