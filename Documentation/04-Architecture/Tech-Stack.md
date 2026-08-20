@@ -42,14 +42,14 @@
 
 ## Estado
 
-| Área                                     | Estado                                             |
-| ---------------------------------------- | -------------------------------------------------- |
-| Next.js, React, TypeScript y Tailwind    | Instalado                                          |
-| shadcn/ui, Lucide y componentes base     | Instalado                                          |
-| Motion, React Hook Form y Zod            | Instalado                                          |
-| ESLint, Prettier, Husky y lint-staged    | Configurado                                        |
-| Metadata, sitemap, robots y base JSON-LD | Preparado                                          |
-| Google Analytics                         | Preparado; falta Measurement ID                    |
-| Maps, Cloudinary y pagos                 | Variables preparadas; faltan flujos y credenciales |
-| Spring Boot y PostgreSQL                 | Directorio reservado; falta contrato y dominio     |
-| Hostinger, VPS y GitHub                  | Pendiente de conectar                              |
+| Área                                     | Estado                                                   |
+| ---------------------------------------- | -------------------------------------------------------- |
+| Next.js, React, TypeScript y Tailwind    | Instalado                                                |
+| shadcn/ui, Lucide y componentes base     | Instalado                                                |
+| Motion, React Hook Form y Zod            | Instalado                                                |
+| ESLint, Prettier, Husky y lint-staged    | Configurado                                              |
+| Metadata, sitemap, robots y base JSON-LD | Preparado                                                |
+| Google Analytics                         | Preparado; falta Measurement ID                          |
+| Maps, Cloudinary y pagos                 | Variables preparadas; faltan flujos y credenciales       |
+| Spring Boot y PostgreSQL                 | Directorio reservado; falta contrato y dominio           |
+| Hostinger, VPS y GitHub                  | GitHub conectado; CI con GitHub Actions en configuración |

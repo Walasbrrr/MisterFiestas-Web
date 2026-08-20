@@ -33,10 +33,10 @@ para clientes particulares y empresas.
 
 ## Próximas decisiones
 
+- Cerrar la configuración de **GitHub Actions** (CI en PRs: lint, typegen, typecheck, format y build).
 - Definir objetivo y alcance exacto del MVP.
 - Asignar responsabilidades entre los cuatro integrantes.
 - Confirmar identidad visual, contenido, catálogo y precios.
-- Inicializar el repositorio remoto y acordar el flujo de ramas y revisiones.
 - Decidir qué necesita ser dinámico en la primera versión y qué puede ser contenido
   estático.
 

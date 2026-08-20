@@ -4,27 +4,33 @@
 
 ## Flujo de Trabajo (Git Workflow)
 
-Utilizamos un enfoque basado en ramas (Branching Strategy) sencillo.
+### Ramas principales
 
-- La rama `main` debe ser siempre desplegable (Production-ready).
-- Todo el trabajo nuevo se hace en ramas creadas a partir de `main`.
-- `main` está protegida: no hay push directo; los cambios entran por Pull Request.
+| Rama   | Propósito                                         | Quién puede hacer push                 |
+| ------ | ------------------------------------------------- | -------------------------------------- |
+| `main` | Producción. Siempre desplegable.                  | Solo **Walen**                         |
+| `dev`  | Integración del equipo. Donde se juntan features. | Todo el equipo, con **CI obligatorio** |
 
-Guía paso a paso con comandos: [Flujo Diario de Git](Documentation/00-Project/Git-Daily-Flow.md).
+### Reglas
 
-### Ciclo rápido
+- El equipo trabaja en ramas `feature/...`, `fix/...` o `docs/...` creadas desde `dev`.
+- Los cambios entran a `dev` por **Pull Request** con **GitHub Actions en verde**.
+- `main` solo la actualiza Walen cuando `dev` está listo para producción.
+- **Nadie del equipo hace push directo a `main`.**
+
+Guía paso a paso: [Flujo Diario de Git](Documentation/00-Project/Git-Daily-Flow.md).
+
+### Ciclo rápido (equipo)
 
 ```bash
-git switch main
-git pull
+git switch dev
+git pull origin dev
 git switch -c feature/nombre-de-la-cosa
 # ... commits ...
 git push -u origin HEAD
 ```
 
-`HEAD` es la rama en la que estás ahora. También puedes usar el nombre explícito: `git push -u origin feature/nombre-de-la-cosa`. En pushes siguientes basta con `git push`.
-
-Luego abre el Pull Request en GitHub hacia `main`.
+Abre un Pull Request hacia **`dev`** y espera que pase el CI.
 
 ### Nombrado de Ramas
 
@@ -56,19 +62,24 @@ El proyecto tiene configuradas herramientas que garantizan la calidad del códig
 
 ### Comandos Útiles
 
-Antes de abrir un Pull Request, es buena práctica correr estos comandos manualmente para asegurarte de que todo está bien:
+Antes de abrir un Pull Request, es buena práctica correr estos comandos manualmente:
 
 ```bash
-pnpm run format:check       # Verifica el formato
-pnpm run lint               # Verifica errores de linter
-pnpm exec next typegen      # Genera tipos de rutas de Next (necesario antes del typecheck)
-pnpm run typecheck          # Verifica errores de tipos TypeScript
+pnpm exec next typegen  # Genera tipos de rutas de Next (necesario antes del typecheck)
+pnpm run format:check   # Verifica el formato
+pnpm run lint           # Verifica errores de linter
+pnpm run typecheck      # Verifica errores de tipos TypeScript
+pnpm run build          # Verifica que el proyecto compila
 ```
+
+**GitHub Actions** ejecuta los mismos pasos en cada PR y push a `dev` y `main`.
 
 ## Proceso de Pull Request (PR)
 
-1.  Haz `git push -u origin HEAD` de tu rama (nunca de `main`). En pushes siguientes, `git push` basta.
-2.  Abre un _Pull Request_ hacia la rama `main`.
-3.  Asigna al menos a un miembro del equipo (como David o Walen) para revisión.
-4.  Una vez aprobado y si los chequeos (CI) pasan, haz merge y borra la rama.
-5.  En local: `git switch main`, `git pull` y `git branch -d` de tu rama.
+1.  Haz `git push -u origin HEAD` de tu rama (nunca de `main`).
+2.  Abre un _Pull Request_ hacia **`dev`**.
+3.  Asigna al menos a un miembro del equipo (David o Walen) para revisión.
+4.  Espera a que pasen los **checks de CI** (GitHub Actions).
+5.  Con CI en verde y PR aprobado, haz merge a `dev` y borra la rama.
+
+Walen promueve `dev` → `main` cuando el equipo acuerda que está listo para producción.

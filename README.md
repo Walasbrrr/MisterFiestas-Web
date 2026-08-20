@@ -5,7 +5,7 @@ real del negocio y convertir visitas en solicitudes de cotización calificadas.
 
 ## Prerequisitos e Inicio rápido
 
-Asegúrate de tener instalados Node.js (v20+) y `pnpm`.
+Asegúrate de tener instalados Node.js (v22+) y `pnpm`.
 
 ```bash
 # Instalar dependencias

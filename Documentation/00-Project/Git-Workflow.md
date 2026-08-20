@@ -7,9 +7,10 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 ## Convenciones
 
 - Cada tarea corresponde a **una rama Git** independiente.
-- Las ramas se crean siempre desde `main` con `git switch -c`.
-- Al terminar una tarea, se abre un **Pull Request** hacia `main` y se asigna un revisor.
-- Solo se hace merge a `main` cuando el PR está aprobado y los checks pasan.
+- Las ramas de trabajo se crean desde `dev` con `git switch -c`.
+- Los PRs del equipo van hacia **`dev`**, no hacia `main`.
+- Solo **Walen** hace push directo a `main` (producción).
+- En `dev`, el **ruleset** exige que GitHub Actions pase antes de merge o push.
 - El nombre de rama sigue el formato indicado entre paréntesis en cada tarea.
 - Comandos del día a día: [Flujo Diario de Git](Git-Daily-Flow.md).
 
@@ -21,12 +22,23 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 >
 > **Responsable principal:** Walen
 
+### Completado
+
 - [x] Crear repositorio remoto en GitHub y conectar el proyecto local (`chore/setup-github-remote`)
-- [x] Configurar ramas protegidas: bloquear push directo a `main`, requerir al menos 1 aprobación en PRs (`chore/branch-protection-rules`)
-- [x] Configurar CI básico con GitHub Actions: ejecutar `pnpm lint`, `pnpm typecheck` y `pnpm format:check` en cada PR (`chore/setup-ci-pipeline`)
-- [ ] Verificar que `husky` + `lint-staged` funcionan correctamente en todos los equipos del equipo (`chore/verify-precommit-hooks`)
-- [ ] Configurar archivo `.env.local` en cada máquina del equipo a partir de `.env.example` (`chore/setup-env-local`)
-- [ ] Crear tablero de proyecto en GitHub Projects o Jira y vincular las tareas de este documento (`chore/setup-project-board`)
+
+### En curso
+
+- [ ] Configurar CI con GitHub Actions en `.github/workflows/ci.yml` (`chore/setup-ci-pipeline`)
+  - Ejecutar en PRs y push a `dev` y `main`: `lint`, `next typegen`, `typecheck`, `format:check` y `build`
+  - Alinear versión de Node con el entorno del proyecto
+- [ ] Configurar ruleset en **`dev`**: push y merge solo con checks de CI en verde (`chore/dev-branch-ruleset`)
+- [ ] Configurar permisos en **`main`**: push directo solo para Walen; el equipo integra vía `dev` (`chore/main-maintainer-role`)
+
+### Más adelante (no activo por ahora)
+
+- Verificar que `husky` + `lint-staged` funcionan correctamente en todas las máquinas del equipo (`chore/verify-precommit-hooks`)
+- Configurar archivo `.env.local` en cada máquina del equipo a partir de `.env.example` (`chore/setup-env-local`)
+- Crear tablero de proyecto en GitHub Projects o Jira y vincular las tareas de este documento (`chore/setup-project-board`)
 
 ---
 
