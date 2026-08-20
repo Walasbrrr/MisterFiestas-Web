@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -5,39 +8,18 @@ import {
   Building2,
   CalendarHeart,
   Check,
-  Music2,
   PartyPopper,
-  Sparkles,
 } from "lucide-react";
+import ServicesCarousel from "@/components/services-carousel";
+import ReservationForm from "@/components/reservation-form";
+import type { ReservationFormHandle } from "@/components/reservation-form";
+import InlineCalendar from "@/components/inline-calendar";
 
-const highlights = [
-  {
-    eyebrow: "La entrada que todos recuerdan",
-    title: "Túnel Infinito",
-    description:
-      "Convierte la llegada en parte de la celebración con una experiencia visual que invita a entrar, mirar y compartir.",
-    icon: Sparkles,
-    tone: "red",
-  },
-  {
-    eyebrow: "Música que reúne",
-    title: "Mariachis",
-    description:
-      "Ese momento en que alguien reconoce la primera canción y toda la fiesta empieza a cantar.",
-    icon: Music2,
-    tone: "peach",
-  },
-  {
-    eyebrow: "Más fiesta, menos vueltas",
-    title: "Combos",
-    description:
-      "Combina experiencias y servicios en una propuesta hecha alrededor de tu fecha, espacio e invitados.",
-    icon: PartyPopper,
-    tone: "cream",
-  },
-] as const;
+
 
 export default function HomePage() {
+  const reservationRef = useRef<ReservationFormHandle>(null);
+
   return (
     <main>
       <header className="site-header">
@@ -60,6 +42,7 @@ export default function HomePage() {
           <Link href="#servicios">Servicios</Link>
           <Link href="#combos">Combos</Link>
           <Link href="#empresas">Empresas</Link>
+          <Link href="#reservar">Reservar</Link>
           <Link href="#nosotros">Nosotros</Link>
         </nav>
 
@@ -127,28 +110,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="service-grid">
-          {highlights.map(
-            ({ eyebrow, title, description, icon: Icon, tone }) => (
-              <article
-                className={`service-card service-card-${tone}`}
-                key={title}
-              >
-                <div className="service-icon">
-                  <Icon aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="eyebrow">{eyebrow}</p>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                  <Link href="#cotizar">
-                    Agregar a mi idea <ArrowRight aria-hidden="true" />
-                  </Link>
-                </div>
-              </article>
-            ),
-          )}
-        </div>
+        <ServicesCarousel />
       </section>
 
       <section className="audience-section" id="empresas">
@@ -192,6 +154,25 @@ export default function HomePage() {
           Comenzar <ArrowRight aria-hidden="true" />
         </Link>
       </section>
+
+      <section className="reservation-section" id="reservar">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Reserva tu fecha</p>
+            <h2>Tu celebración empieza aquí.</h2>
+          </div>
+          <p>
+            Consulta la disponibilidad en nuestro calendario, identifica
+            las fechas abiertas y reserva tu evento en pocos pasos.
+          </p>
+        </div>
+
+        <InlineCalendar
+          onReserveClick={() => reservationRef.current?.open()}
+        />
+      </section>
+
+      <ReservationForm ref={reservationRef} />
 
       <footer id="nosotros">
         <div className="footer-brand">
