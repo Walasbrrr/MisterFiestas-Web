@@ -8,6 +8,23 @@ Utilizamos un enfoque basado en ramas (Branching Strategy) sencillo.
 
 - La rama `main` debe ser siempre desplegable (Production-ready).
 - Todo el trabajo nuevo se hace en ramas creadas a partir de `main`.
+- `main` está protegida: no hay push directo; los cambios entran por Pull Request.
+
+Guía paso a paso con comandos: [Flujo Diario de Git](Documentation/00-Project/Git-Daily-Flow.md).
+
+### Ciclo rápido
+
+```bash
+git switch main
+git pull
+git switch -c feature/nombre-de-la-cosa
+# ... commits ...
+git push -u origin HEAD
+```
+
+`HEAD` es la rama en la que estás ahora. También puedes usar el nombre explícito: `git push -u origin feature/nombre-de-la-cosa`. En pushes siguientes basta con `git push`.
+
+Luego abre el Pull Request en GitHub hacia `main`.
 
 ### Nombrado de Ramas
 
@@ -42,14 +59,16 @@ El proyecto tiene configuradas herramientas que garantizan la calidad del códig
 Antes de abrir un Pull Request, es buena práctica correr estos comandos manualmente para asegurarte de que todo está bien:
 
 ```bash
-pnpm run format:check  # Verifica el formato
-pnpm run lint          # Verifica errores de linter
-pnpm run typecheck     # Verifica errores de tipos TypeScript
+pnpm run format:check       # Verifica el formato
+pnpm run lint               # Verifica errores de linter
+pnpm exec next typegen      # Genera tipos de rutas de Next (necesario antes del typecheck)
+pnpm run typecheck          # Verifica errores de tipos TypeScript
 ```
 
 ## Proceso de Pull Request (PR)
 
-1.  Haz un _Push_ de tu rama al repositorio remoto.
+1.  Haz `git push -u origin HEAD` de tu rama (nunca de `main`). En pushes siguientes, `git push` basta.
 2.  Abre un _Pull Request_ hacia la rama `main`.
 3.  Asigna al menos a un miembro del equipo (como David o Walen) para revisión.
 4.  Una vez aprobado y si los chequeos (CI) pasan, haz merge y borra la rama.
+5.  En local: `git switch main`, `git pull` y `git branch -d` de tu rama.
