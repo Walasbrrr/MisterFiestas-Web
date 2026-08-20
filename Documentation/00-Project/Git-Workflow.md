@@ -1,17 +1,15 @@
 # Flujo de Trabajo Git — Plan de Desarrollo por Fases
 
-Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en fases claras. Cada fase agrupa tareas que pueden asignarse como ramas Git independientes. Al completar todas las tareas de una fase, se considera un **Milestone** del proyecto.
+Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en fases claras. Cada fase agrupa tareas que el equipo puede ir completando en la rama `dev`. Al completar todas las tareas de una fase, se considera un **Milestone** del proyecto.
 
 ---
 
 ## Convenciones
 
-- Cada tarea corresponde a **una rama Git** independiente.
-- Las ramas de trabajo se crean desde `dev` con `git switch -c`.
-- Los PRs del equipo van hacia **`dev`**, no hacia `main`.
-- Solo **Walen** hace push directo a `main` (producción).
-- En `dev`, el **ruleset** exige que GitHub Actions pase antes de merge o push.
-- El nombre de rama sigue el formato indicado entre paréntesis en cada tarea.
+- Todo el desarrollo ocurre en la rama **`dev`** (push directo del equipo).
+- Solo **Walen** hace push a **`main`** (producción), mergeando `dev` cuando corresponda.
+- No se usan ramas `feature/` por tarea; los códigos entre paréntesis (ej. `pagina-servicios`) son **identificadores de tarea** para el roadmap, no nombres de rama.
+- GitHub Actions debe pasar en cada push a `dev`.
 - Comandos del día a día: [Flujo Diario de Git](Git-Daily-Flow.md).
 
 ---
@@ -25,14 +23,12 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 ### Completado
 
 - [x] Crear repositorio remoto en GitHub y conectar el proyecto local (`chore/setup-github-remote`)
+- [x] Configurar CI con GitHub Actions en `.github/workflows/ci.yml` (`chore/setup-ci-pipeline`)
 
 ### En curso
 
-- [ ] Configurar CI con GitHub Actions en `.github/workflows/ci.yml` (`chore/setup-ci-pipeline`)
-  - Ejecutar en PRs y push a `dev` y `main`: `lint`, `next typegen`, `typecheck`, `format:check` y `build`
-  - Alinear versión de Node con el entorno del proyecto
-- [ ] Configurar ruleset en **`dev`**: push y merge solo con checks de CI en verde (`chore/dev-branch-ruleset`)
-- [ ] Configurar permisos en **`main`**: push directo solo para Walen; el equipo integra vía `dev` (`chore/main-maintainer-role`)
+- [ ] Configurar ruleset en **`dev`**: push solo con checks de CI en verde (`chore/dev-branch-ruleset`)
+- [ ] Configurar permisos en **`main`**: push directo solo para Walen (`chore/main-maintainer-role`)
 
 ### Más adelante (no activo por ahora)
 

@@ -1,57 +1,52 @@
 # Flujo Diario de Git
 
-Este repositorio usa dos ramas principales:
+Dos ramas. Sin ramas `feature/`. El equipo en `dev`; Walen en `main`.
 
-| Rama   | Quién                       | Regla                                                              |
-| ------ | --------------------------- | ------------------------------------------------------------------ |
-| `main` | Solo **Walen** (maintainer) | Production-ready. Push directo permitido solo para Walen.          |
-| `dev`  | Todo el equipo              | Rama de integración. Push y merge solo si **GitHub Actions** pasa. |
-
-El resto del equipo **no hace push a `main`**. Trabaja en ramas de feature y integra en `dev`.
+| Rama   | Quién                   | Regla                                          |
+| ------ | ----------------------- | ---------------------------------------------- |
+| `dev`  | Sebastian, Mario, David | Push directo; CI de GitHub Actions obligatorio |
+| `main` | Solo **Walen**          | Producción; promoción desde `dev`              |
 
 ## Resumen
 
 ```text
-main  (solo Walen — producción)
+main  ← solo Walen (producción)
   ▲
-  │  merge cuando dev esté listo
+  │  git merge dev  (cuando esté listo)
   │
-dev   (equipo — integración + CI obligatorio)
-  ▲
-  │  Pull Request + CI en verde
+dev   ← todo el equipo (desarrollo + CI)
   │
-feature/mi-tarea
+  ├── git pull origin dev
+  ├── commits
+  └── git push origin dev
 ```
 
-## Equipo — empezar una tarea
+## Equipo — día a día en `dev`
 
 ```bash
 git switch dev
 git pull origin dev
 
-git switch -c feature/nombre-de-la-cosa
-# ... commits ...
-git push -u origin HEAD
+# ... editar archivos ...
+
+git add .
+git commit -m "feat: descripción del cambio"
+git push origin dev
 ```
 
-Abre un **Pull Request hacia `dev`**. El merge solo es posible si GitHub Actions pasa.
+Espera a que **GitHub Actions** pase. Si falla, corrige y vuelve a pushear.
 
-## Equipo — actualizar tu rama si `dev` cambió
-
-No uses `git switch -c` otra vez; la rama ya existe.
+### Si alguien más pusheó mientras trabajabas
 
 ```bash
-git switch dev
 git pull origin dev
-
-git switch feature/mi-tarea
-git merge dev
-git push
+# resolver conflictos si hay
+git push origin dev
 ```
 
-## Walen — promover `dev` a `main`
+## Walen — promover a producción
 
-Cuando `dev` esté estable y listo para producción:
+Cuando `dev` esté estable:
 
 ```bash
 git switch main
@@ -60,22 +55,20 @@ git merge dev
 git push origin main
 ```
 
-Solo Walen tiene permiso de push directo a `main`.
+## Qué no hacer
+
+- No crear ramas `feature/`, `fix/` ni `docs/` para el flujo normal.
+- No hacer push a `main` si no eres Walen.
+- No pushear a `dev` sin que pasen los checks locales (lint, typecheck, build).
+- No dejar `dev` con CI en rojo.
 
 ## Comandos útiles
 
-| Acción           | Comando moderno           |
-| ---------------- | ------------------------- |
-| Cambiar de rama  | `git switch dev`          |
-| Crear rama nueva | `git switch -c feature/x` |
-| Primer push      | `git push -u origin HEAD` |
-| Push siguientes  | `git push`                |
+| Acción           | Comando               |
+| ---------------- | --------------------- |
+| Ir a desarrollo  | `git switch dev`      |
+| Actualizar `dev` | `git pull origin dev` |
+| Subir cambios    | `git push origin dev` |
+| Ir a producción  | `git switch main`     |
 
-## Qué no hacer
-
-- No hacer push a `main` si no eres Walen.
-- No mergear a `dev` con CI en rojo.
-- No usar `git switch -c feature/x` si esa rama ya existe.
-- No usar `git push -u origin` sin rama: usa `git push -u origin HEAD`.
-
-Guía completa de contribución: [CONTRIBUTING.md](../../CONTRIBUTING.md).
+Guía completa: [CONTRIBUTING.md](../../CONTRIBUTING.md).

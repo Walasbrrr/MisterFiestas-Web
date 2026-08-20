@@ -33,7 +33,7 @@ para clientes particulares y empresas.
 
 ## Próximas decisiones
 
-- Cerrar la configuración de **GitHub Actions** (CI en PRs: lint, typegen, typecheck, format y build).
+- Configurar ruleset en `dev` y permisos de `main` en GitHub.
 - Definir objetivo y alcance exacto del MVP.
 - Asignar responsabilidades entre los cuatro integrantes.
 - Confirmar identidad visual, contenido, catálogo y precios.

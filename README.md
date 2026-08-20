@@ -8,10 +8,9 @@ real del negocio y convertir visitas en solicitudes de cotización calificadas.
 Asegúrate de tener instalados Node.js (v22+) y `pnpm`.
 
 ```bash
-# Instalar dependencias
+git switch dev
+git pull origin dev
 pnpm install
-
-# Iniciar el servidor de desarrollo
 pnpm run dev
 ```
 

@@ -4,19 +4,20 @@
 
 ## Flujo de Trabajo (Git Workflow)
 
-### Ramas principales
+Modelo simple con **dos ramas**, sin ramas `feature/`:
 
-| Rama   | Propósito                                         | Quién puede hacer push                 |
-| ------ | ------------------------------------------------- | -------------------------------------- |
-| `main` | Producción. Siempre desplegable.                  | Solo **Walen**                         |
-| `dev`  | Integración del equipo. Donde se juntan features. | Todo el equipo, con **CI obligatorio** |
+| Rama   | Propósito             | Quién hace push                          |
+| ------ | --------------------- | ---------------------------------------- |
+| `dev`  | Desarrollo del equipo | Sebastian, Mario, David (CI obligatorio) |
+| `main` | Producción            | Solo **Walen**                           |
 
 ### Reglas
 
-- El equipo trabaja en ramas `feature/...`, `fix/...` o `docs/...` creadas desde `dev`.
-- Los cambios entran a `dev` por **Pull Request** con **GitHub Actions en verde**.
-- `main` solo la actualiza Walen cuando `dev` está listo para producción.
-- **Nadie del equipo hace push directo a `main`.**
+- Todo el equipo trabaja **directamente en `dev`**: pull, commits y push.
+- **No se usan ramas feature.** No hace falta crear ramas por tarea.
+- GitHub Actions debe pasar en cada push a `dev` (ruleset en GitHub).
+- Solo Walen promueve cambios de `dev` → `main` cuando están listos para producción.
+- **Nadie más hace push a `main`.**
 
 Guía paso a paso: [Flujo Diario de Git](Documentation/00-Project/Git-Daily-Flow.md).
 
@@ -25,20 +26,20 @@ Guía paso a paso: [Flujo Diario de Git](Documentation/00-Project/Git-Daily-Flow
 ```bash
 git switch dev
 git pull origin dev
-git switch -c feature/nombre-de-la-cosa
-# ... commits ...
-git push -u origin HEAD
+# ... editar, commit ...
+git push origin dev
 ```
 
-Abre un Pull Request hacia **`dev`** y espera que pase el CI.
+Espera a que **GitHub Actions** termine en verde antes de considerar el cambio integrado.
 
-### Nombrado de Ramas
+### Ciclo rápido (Walen — producción)
 
-Prefija tus ramas con el tipo de trabajo que estás realizando:
-
-- `feature/nombre-de-la-funcionalidad` (ej. `feature/catalogo-servicios`)
-- `fix/descripcion-del-bug` (ej. `fix/error-formulario`)
-- `docs/que-se-documento` (ej. `docs/actualizar-api-contract`)
+```bash
+git switch main
+git pull origin main
+git merge dev
+git push origin main
+```
 
 ### Convención de Commits (Conventional Commits)
 
@@ -60,9 +61,7 @@ El proyecto tiene configuradas herramientas que garantizan la calidad del códig
 3.  **Prettier:** Formatea el código (espacios, comillas, etc.) para mantener un estilo unificado. (Se ejecuta automáticamente `--write`).
 4.  **TypeScript:** Valida que no haya errores de tipado.
 
-### Comandos Útiles
-
-Antes de abrir un Pull Request, es buena práctica correr estos comandos manualmente:
+### Comandos útiles (antes de push a `dev`)
 
 ```bash
 pnpm exec next typegen  # Genera tipos de rutas de Next (necesario antes del typecheck)
@@ -72,14 +71,10 @@ pnpm run typecheck      # Verifica errores de tipos TypeScript
 pnpm run build          # Verifica que el proyecto compila
 ```
 
-**GitHub Actions** ejecuta los mismos pasos en cada PR y push a `dev` y `main`.
+**GitHub Actions** ejecuta los mismos pasos en cada push a `dev` y `main`.
 
-## Proceso de Pull Request (PR)
+## Coordinación en equipo
 
-1.  Haz `git push -u origin HEAD` de tu rama (nunca de `main`).
-2.  Abre un _Pull Request_ hacia **`dev`**.
-3.  Asigna al menos a un miembro del equipo (David o Walen) para revisión.
-4.  Espera a que pasen los **checks de CI** (GitHub Actions).
-5.  Con CI en verde y PR aprobado, haz merge a `dev` y borra la rama.
-
-Walen promueve `dev` → `main` cuando el equipo acuerda que está listo para producción.
+- Avisen en el chat del equipo **antes de hacer push a `dev`** si van a tocar archivos grandes o compartidos.
+- Si `dev` avanzó mientras trabajabas: `git pull origin dev` antes de volver a pushear.
+- Resuelvan conflictos en local antes del push; no dejen `dev` rota.

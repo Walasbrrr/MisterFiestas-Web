@@ -15,11 +15,17 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 
 ### Infraestructura y CI
 
-- **GitHub Actions:** Pipeline en `.github/workflows/ci.yml` con `lint`, `next typegen`, `typecheck`, `format:check` y `build` en PRs y push a `dev` y `main`.
-- **Entorno de CI:** Node.js **22.13** y pnpm 11.3.0 (Node 20 tiene problemas de compatibilidad con pnpm 11), caché de dependencias y `HUSKY=0`.
-- **Modelo de ramas:** `main` (producción, push solo Walen) + `dev` (integración del equipo con CI obligatorio vía ruleset).
-- **Guía diaria:** `Documentation/00-Project/Git-Daily-Flow.md` con flujo `feature → dev → main`.
+- **GitHub Actions:** Pipeline en `.github/workflows/ci.yml` con `lint`, `next typegen`, `typecheck`, `format:check` y `build` en push a `dev` y `main`.
+- **Entorno de CI:** Node.js **22.13** y pnpm 11.3.0, caché de dependencias y `HUSKY=0`.
+
+### Flujo de trabajo Git (simplificado)
+
+- **Modelo:** Dos ramas — `dev` (equipo) y `main` (producción, solo Walen).
+- **Sin ramas feature:** El equipo hace pull, commit y push directo en `dev`; CI valida cada push.
+- **Promoción:** Walen mergea `dev` → `main` cuando el código está listo para producción.
+- **Documentación:** `CONTRIBUTING.md` y `Git-Daily-Flow.md` actualizados con el flujo simplificado.
 
 ### Pendiente en GitHub
 
-- Crear rama `dev`, aplicar ruleset con checks de CI y restringir push a `main` al rol de maintainer (Walen).
+- Ruleset en `dev` con checks de CI obligatorios.
+- Restringir push a `main` al rol de maintainer (Walen).
