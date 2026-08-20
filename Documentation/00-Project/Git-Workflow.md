@@ -44,7 +44,7 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 >
 > **Responsable principal:** Mario (contenidos) + David (validación) + Sebastián (datos)
 
-- [ ] Reunión con el dueño de MisterFiestas para responder las [Preguntas Pendientes](01-Product/Pending-Client-Questions.md) (`docs/respuestas-cliente`)
+- [x] Reunión con el dueño de MisterFiestas para responder las [Preguntas Pendientes](01-Product/Pending-Client-Questions.md) (`docs/respuestas-cliente`)
 - [ ] Completar la tabla de servicios en [Catalog-and-Pricing.md](01-Product/Catalog-and-Pricing.md) con datos reales: descripción, qué incluye, precio, capacidad (`docs/completar-catalogo`)
 - [ ] Definir los combos/paquetes reales que ofrece el negocio y agregarlos al catálogo (`docs/definir-paquetes`)
 - [ ] Recopilar y seleccionar fotografías reales de cada servicio (mínimo 3 por servicio) (`docs/recopilar-fotos-servicios`)
