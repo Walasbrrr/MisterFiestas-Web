@@ -666,7 +666,7 @@ h4 {
   flex-direction: column;
   gap: 28px;
   width: min(100% - 2 * var(--margin-mobile), var(--page-max));
-  margin: 0 auto 80px;
+  margin: 80px auto 80px;
   padding: 40px 32px;
   background: linear-gradient(135deg, #e86216 0%, #cf282a 100%);
   border-radius: 28px;
@@ -3027,7 +3027,7 @@ footer {
 
 /* ── Reservation Section (in-page) ── */
 .reservation-section {
-  padding: 110px max(24px, calc((100% - 1260px) / 2));
+  padding: 110px max(24px, calc((100% - 1260px) / 2)) 140px;
   background: linear-gradient(
     175deg,
     rgb(57 45 42 / 97%),
