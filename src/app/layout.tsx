@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
   description: siteConfig.description,
+  icons: {
+    icon: "/brand/mister-fiestas-logo.jpeg",
+    shortcut: "/brand/mister-fiestas-logo.jpeg",
+    apple: "/brand/mister-fiestas-logo.jpeg",
+  },
   openGraph: {
     type: "website",
     locale: "es_DO",

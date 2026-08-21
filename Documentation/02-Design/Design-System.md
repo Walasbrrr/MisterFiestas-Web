@@ -30,16 +30,15 @@ El proyecto utiliza fuentes optimizadas provistas por Google Fonts a través de 
 
 La interfaz se construye con clases CSS modulares definidas en `globals.css`:
 
-- `.site-header`: Navegación principal, sticky, con efecto glassmorphism (fondo translúcido + blur).
-- `.button`: Botón primario redondeado (pill) con fondo `--orange` y transición de hover (eleva -2px).
-- `.button-secondary`: Variante transparente con borde `--espresso`.
-- `.button-dark`: Variante sólida oscura con fondo `--espresso`.
-- `.chip`: Etiqueta (tag) redondeada usada para destacar categorías (e.g., "Experiencias para celebrar en grande").
-- `.service-card`: Tarjetas para listar servicios con un diseño de borde y sombra suave. Tiene modificadores de color:
-  - `.service-card-red`
-  - `.service-card-peach`
-  - `.service-card-cream`
-- `.eyebrow`: Pequeño texto introductorio sobre los títulos, generalmente en uppercase y `--red`.
+- `.site-header` / `.site-footer`: navegación y pie compartidos (nav del sitemap).
+- `.hero-bleed`: hero full-bleed de la Home.
+- `.bento-grid` / `.bento-card`: especialidades (Eventos, Empresas, Tienda).
+- `.button`: botón primario redondeado (pill) con fondo `--orange`.
+- `.button-secondary` / `.button-dark`: variantes outline y espresso.
+- `.chip` / `.eyebrow`: etiquetas y cejas tipográficas.
+- `.service-row` / `.detail-*` / `.quote-*`: catálogo, detalle y resumen de cotización.
+
+Motion: componentes `Reveal`, `RevealStagger` y `RevealItem` en `src/components/reveal.tsx` (Motion for React).
 
 ## Componentes shadcn/ui
 
