@@ -42,7 +42,7 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 
 > **Objetivo:** Tener toda la información real del negocio lista antes de construir las páginas. Sin contenido real, el frontend no puede avanzar bien.
 >
-> **Responsable principal:** Mario (contenidos) + David (validación) + Sebastián (datos)
+> **Responsable principal:** **Sebastián (datos)**
 
 - [x] Reunión con el dueño de MisterFiestas para responder las [Preguntas Pendientes](01-Product/Pending-Client-Questions.md) (`docs/respuestas-cliente`)
 - [ ] Completar la tabla de servicios en [Catalog-and-Pricing.md](01-Product/Catalog-and-Pricing.md) con datos reales: descripción, qué incluye, precio, capacidad (`docs/completar-catalogo`)
@@ -62,20 +62,20 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 >
 > **Responsable principal:** Walen (diseño + código) + David (revisión de flujos)
 
-- [ ] Crear wireframes en Figma de todas las páginas del [Sitemap](01-Product/Site-Map.md): Inicio, Servicios, Clientes, Empresas, Galería, Nosotros, Contacto/Cotización (`design/wireframes-completos`)
-- [ ] Diseñar versión móvil de cada pantalla en Figma (`design/wireframes-mobile`)
-- [ ] Construir componente `Header` con navegación responsive + menú hamburguesa móvil (`feature/header-nav-responsive`)
-- [ ] Construir componente `Footer` completo con redes sociales, enlaces y schema markup (`feature/footer-completo`)
-- [ ] Construir componente `ServiceCard` reutilizable con imagen, título, descripción y CTA (`feature/service-card-component`)
-- [ ] Construir componente `PackageCard` para combos/paquetes (`feature/package-card-component`)
-- [ ] Construir componente `TestimonialCard` para testimonios de clientes (`feature/testimonial-card`)
-- [ ] Construir componente `GalleryGrid` con lightbox para fotos/videos (`feature/gallery-grid-component`)
-- [ ] Implementar animaciones de scroll con `motion` en las secciones principales (`feature/scroll-animations`)
-- [ ] Implementar modo oscuro (dark mode) si se decide incluirlo en el MVP (`feature/dark-mode`)
+- [x] Crear wireframes en Figma de todas las páginas del [Sitemap](01-Product/Site-Map.md): Inicio, Servicios, Clientes, Empresas, Galería, Nosotros, Contacto/Cotización (`design/wireframes-completos`)
+- [x] Diseñar versión móvil de cada pantalla en Figma (`design/wireframes-mobile`)
+- [x] Construir componente `Header` con navegación responsive + menú hamburguesa móvil (`feature/header-nav-responsive`)
+- [x] Construir componente `Footer` completo con redes sociales, enlaces y schema markup (`feature/footer-completo`)
+- [x] Construir componente `ServiceCard` reutilizable con imagen, título, descripción y CTA (`feature/service-card-component`)
+- [x] Construir componente `PackageCard` para combos/paquetes (`feature/package-card-component`)
+- [x] Construir componente `TestimonialCard` para testimonios de clientes (`feature/testimonial-card`)
+- [x] Construir componente `GalleryGrid` con lightbox para fotos/videos (`feature/gallery-grid-component`)
+- [x] Implementar animaciones de scroll con `motion` en las secciones principales (`feature/scroll-animations`)
+- [x] Implementar modo oscuro (dark mode) si se decide incluirlo en el MVP (`feature/dark-mode`)
 
 ---
 
-## Fase 3 — Páginas y Rutas del Frontend
+## Fase 3 — Páginas y Rutas del Frontend **revision**
 
 > **Objetivo:** Ensamblar las páginas completas usando los componentes de la Fase 2 y el contenido de la Fase 1.
 >
@@ -116,7 +116,7 @@ Este documento organiza todo el trabajo pendiente del proyecto MisterFiestas en 
 
 > **Objetivo:** Crear la API REST que recibirá y persistirá las solicitudes de cotización.
 >
-> **Responsable principal:** Sebastián (modelo de datos) + Mario (endpoints)
+> **Responsable principal:** **Sebastián (modelo de datos) + Mario (endpoints) + Walen(Supervision)**
 
 - [ ] Inicializar proyecto Spring Boot dentro de `backend/` con las dependencias aprobadas en [Tech-Stack.md](../04-Architecture/Tech-Stack.md) (`feature/backend-init-spring-boot`)
 - [ ] Crear entidades JPA basadas en el [Modelo de Datos](../04-Architecture/Data-Model.md): `Cliente`, `Servicio`, `Cotizacion`, `CotizacionServicio` (`feature/backend-entidades-jpa`)

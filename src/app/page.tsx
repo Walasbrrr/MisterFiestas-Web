@@ -1,205 +1,302 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   Building2,
   CalendarHeart,
-  Check,
-  Music2,
   PartyPopper,
+  ShoppingBag,
   Sparkles,
 } from "lucide-react";
-
-const highlights = [
-  {
-    eyebrow: "La entrada que todos recuerdan",
-    title: "Túnel Infinito",
-    description:
-      "Convierte la llegada en parte de la celebración con una experiencia visual que invita a entrar, mirar y compartir.",
-    icon: Sparkles,
-    tone: "red",
-  },
-  {
-    eyebrow: "Música que reúne",
-    title: "Mariachis",
-    description:
-      "Ese momento en que alguien reconoce la primera canción y toda la fiesta empieza a cantar.",
-    icon: Music2,
-    tone: "peach",
-  },
-  {
-    eyebrow: "Más fiesta, menos vueltas",
-    title: "Combos",
-    description:
-      "Combina experiencias y servicios en una propuesta hecha alrededor de tu fecha, espacio e invitados.",
-    icon: PartyPopper,
-    tone: "cream",
-  },
-] as const;
+import { Reveal, RevealItem, RevealStagger } from "@/components/reveal";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import {
+  sampleTestimonials,
+  TestimonialCard,
+} from "@/components/testimonial-card";
 
 export default function HomePage() {
   return (
-    <main>
-      <header className="site-header">
-        <Link
-          className="brand"
-          href="#inicio"
-          aria-label="Mister Fiestas, inicio"
-        >
-          <Image
-            src="/brand/mister-fiestas-logo.jpeg"
-            alt="Mister Fiestas"
-            width={52}
-            height={52}
-            priority
-          />
-          <span>Mister Fiestas</span>
-        </Link>
-
-        <nav className="desktop-nav" aria-label="Navegación principal">
-          <Link href="#servicios">Servicios</Link>
-          <Link href="#combos">Combos</Link>
-          <Link href="#empresas">Empresas</Link>
-          <Link href="#nosotros">Nosotros</Link>
-        </nav>
-
-        <Link className="button button-small" href="#cotizar">
-          Cotizar mi evento <ArrowRight aria-hidden="true" />
-        </Link>
-      </header>
-
-      <section className="hero" id="inicio">
-        <div className="hero-copy">
-          <p className="chip">
-            <PartyPopper aria-hidden="true" /> Experiencias para celebrar en
-            grande
-          </p>
-          <h1>
-            Tu evento
-            <span> merece más.</span>
-          </h1>
-          <p className="hero-lede">
-            Creamos momentos que se sienten cercanos, alegres y completamente
-            tuyos. Cuéntanos qué celebras; nosotros te ayudamos a darle forma.
-          </p>
-          <div className="hero-actions">
-            <Link className="button" href="#cotizar">
-              Empezar mi cotización <ArrowRight aria-hidden="true" />
-            </Link>
-            <Link className="button button-secondary" href="#servicios">
-              Ver servicios
-            </Link>
+    <div className="page-shell">
+      <SiteHeader />
+      <main>
+        {/* Mobile & Desktop Hero */}
+        <section className="hero-bleed" aria-labelledby="home-hero-title">
+          <div className="hero-bleed-bg" aria-hidden="true">
+            <div className="hero-bleed-wash" />
           </div>
-          <div className="trust-row" aria-label="Beneficios">
-            <span>
-              <Check aria-hidden="true" /> Atención personalizada
-            </span>
-            <span>
-              <Check aria-hidden="true" /> Disponibilidad confirmada
-            </span>
-          </div>
-        </div>
+          <Reveal className="hero-bleed-content">
+            <p className="chip">
+              <PartyPopper aria-hidden="true" /> Santo Domingo · Experiencias
+              únicas
+            </p>
+            <h1 id="home-hero-title">
+              Tu evento
+              <br />
+              <em>merece más</em>
+            </h1>
+            <p className="hero-lede">
+              Túneles de luz infinita, música en vivo y momentos diseñados con
+              calidez para que nadie quiera irse temprano.
+            </p>
+            <div className="hero-actions">
+              <Link className="button" href="/cotizar">
+                Cotizar ahora <ArrowRight aria-hidden="true" />
+              </Link>
+              <Link className="button button-secondary" href="/servicios">
+                Explorar servicios
+              </Link>
+            </div>
+          </Reveal>
+        </section>
 
-        <div
-          className="hero-visual"
-          aria-label="Espacio reservado para fotografía del Túnel Infinito"
-        >
-          <span className="hero-orbit hero-orbit-one" />
-          <span className="hero-orbit hero-orbit-two" />
-          <span className="hero-orbit hero-orbit-three" />
-          <div className="visual-note">
-            <span>Experiencia destacada</span>
-            <strong>Túnel Infinito</strong>
-            <small>Fotografía real próximamente</small>
-          </div>
-        </div>
-      </section>
-
-      <section className="services-section" id="servicios">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Servicios destacados</p>
-            <h2>Momentos que hacen la fiesta.</h2>
-          </div>
-          <p>
-            Una selección inicial pensada para ayudarte a imaginar el evento y
-            solicitar solo lo que realmente necesitas.
-          </p>
-        </div>
-
-        <div className="service-grid">
-          {highlights.map(
-            ({ eyebrow, title, description, icon: Icon, tone }) => (
-              <article
-                className={`service-card service-card-${tone}`}
-                key={title}
+        {/* Featured Signature Spotlight (Direct from Design Pack Screen) */}
+        <section className="section" style={{ paddingBottom: 0 }}>
+          <Reveal className="mobile-spotlight">
+            <div className="mobile-spotlight-art" aria-hidden="true">
+              <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+                <rect
+                  x="10"
+                  y="10"
+                  width="200"
+                  height="200"
+                  rx="16"
+                  stroke="#ec6d20"
+                  strokeWidth="4"
+                />
+                <rect
+                  x="35"
+                  y="35"
+                  width="150"
+                  height="150"
+                  rx="12"
+                  stroke="#ec6d20"
+                  strokeWidth="4"
+                />
+                <rect
+                  x="60"
+                  y="60"
+                  width="100"
+                  height="100"
+                  rx="8"
+                  stroke="#ec6d20"
+                  strokeWidth="4"
+                />
+                <rect
+                  x="85"
+                  y="85"
+                  width="50"
+                  height="50"
+                  rx="4"
+                  stroke="#ec6d20"
+                  strokeWidth="4"
+                />
+              </svg>
+            </div>
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginBottom: 12,
+                }}
               >
-                <div className="service-icon">
-                  <Icon aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="eyebrow">{eyebrow}</p>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                  <Link href="#cotizar">
-                    Agregar a mi idea <ArrowRight aria-hidden="true" />
+                <span
+                  className="eyebrow"
+                  style={{ margin: 0, color: "#ff914d" }}
+                >
+                  01 / DESTACADO
+                </span>
+                <span className="spotlight-badge">Más rentable</span>
+              </div>
+              <div className="mobile-spotlight-copy">
+                <h3>Túnel Infinito</h3>
+                <p>
+                  Convierte la llegada en el primer gran recuerdo de la noche
+                  con nuestra entrada inmersiva de luces infinitas.
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                  <Link
+                    className="button button-small"
+                    href="/servicios/tunel-infinito"
+                  >
+                    Ver detalles <ArrowRight aria-hidden="true" />
+                  </Link>
+                  <Link
+                    className="spotlight-btn-secondary"
+                    href="/cotizar?add=tunel-infinito"
+                  >
+                    + Añadir a cotización
                   </Link>
                 </div>
-              </article>
-            ),
-          )}
-        </div>
-      </section>
-
-      <section className="audience-section" id="empresas">
-        <div className="audience-copy">
-          <p className="eyebrow">Personal o empresarial</p>
-          <h2>La misma alegría, preparada para tu tipo de evento.</h2>
-          <p>
-            Adaptamos la propuesta a celebraciones familiares, activaciones,
-            encuentros de equipos y eventos para clientes.
-          </p>
-        </div>
-        <div className="audience-options">
-          <article>
-            <CalendarHeart aria-hidden="true" />
-            <div>
-              <strong>Celebraciones personales</strong>
-              <span>Bodas, cumpleaños y reuniones.</span>
+              </div>
             </div>
-          </article>
-          <article>
-            <Building2 aria-hidden="true" />
-            <div>
-              <strong>Eventos empresariales</strong>
-              <span>Información de empresa y RNC en la solicitud.</span>
-            </div>
-          </article>
-        </div>
-      </section>
+          </Reveal>
+        </section>
 
-      <section className="quote-banner" id="cotizar">
-        <div>
-          <p className="eyebrow">Cotización en cuatro pasos</p>
-          <h2>Cuéntanos qué estás celebrando.</h2>
-          <p>
-            Selecciona servicios, agrega los detalles de tu fecha y recibe una
-            propuesta después de confirmar disponibilidad. No necesitas pagar
-            ahora.
-          </p>
-        </div>
-        <Link className="button button-dark" href="#cotizar">
-          Comenzar <ArrowRight aria-hidden="true" />
-        </Link>
-      </section>
+        {/* Bento Specialties */}
+        <section className="section-muted" aria-labelledby="specialties-title">
+          <div className="section-inner">
+            <Reveal className="section-heading-row">
+              <div className="section-heading" style={{ marginBottom: 0 }}>
+                <p className="eyebrow">02 / Más formas de celebrar</p>
+                <h2 id="specialties-title">Arma tu momento</h2>
+                <p>
+                  Selecciones curadas para aportar sofisticación y sorpresa,
+                  tanto en celebraciones íntimas como en eventos de empresa.
+                </p>
+              </div>
+              <Link className="section-link" href="/servicios">
+                Ver todo el catálogo <ArrowRight aria-hidden="true" />
+              </Link>
+            </Reveal>
 
-      <footer id="nosotros">
-        <div className="footer-brand">
-          Mister <span>Fiestas</span>
-        </div>
-        <p>Eventos que se viven con alegría.</p>
-        <p>© {new Date().getFullYear()} Mister Fiestas</p>
-      </footer>
-    </main>
+            <RevealStagger className="bento-grid">
+              <RevealItem>
+                <Link className="bento-card bento-feature" href="/eventos">
+                  <div className="bento-copy">
+                    <p className="chip" style={{ marginBottom: 16 }}>
+                      <Sparkles aria-hidden="true" /> Experiencias únicas
+                    </p>
+                    <h3>Eventos particulares</h3>
+                    <p>
+                      Bodas, cumpleaños, baby showers y graduaciones con
+                      atención a cada detalle.
+                    </p>
+                    <span className="text-link">
+                      Conocer detalles <ArrowRight aria-hidden="true" />
+                    </span>
+                  </div>
+                </Link>
+              </RevealItem>
+
+              <RevealItem>
+                <Link className="bento-card bento-peach" href="/empresas">
+                  <div className="bento-icon">
+                    <Building2 aria-hidden="true" />
+                  </div>
+                  <div className="bento-copy">
+                    <p className="eyebrow">Corporativo</p>
+                    <h3>Empresas</h3>
+                    <p>
+                      Activaciones, lanzamientos y fiestas de equipo con impacto
+                      profesional.
+                    </p>
+                    <span className="text-link">Ver opciones ↗</span>
+                  </div>
+                </Link>
+              </RevealItem>
+
+              <RevealItem>
+                <Link className="bento-card bento-cream" href="/tienda">
+                  <div className="bento-icon">
+                    <ShoppingBag aria-hidden="true" />
+                  </div>
+                  <div className="bento-copy">
+                    <p className="eyebrow">Alquiler y paquetes</p>
+                    <h3>Tienda y combos</h3>
+                    <p>
+                      Servicios individuales y paquetes listos para armar tu
+                      evento sin complicaciones.
+                    </p>
+                    <span className="text-link">Ver catálogo ↗</span>
+                  </div>
+                </Link>
+              </RevealItem>
+            </RevealStagger>
+          </div>
+        </section>
+
+        {/* Personal vs Enterprise */}
+        <Reveal className="section">
+          <div className="section-heading">
+            <p className="eyebrow">Personal o empresarial</p>
+            <h2>La misma alegría, preparada para tu tipo de evento.</h2>
+            <p>
+              Adaptamos la propuesta a celebraciones familiares, activaciones y
+              encuentros corporativos.
+            </p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gap: 14,
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            }}
+          >
+            <article
+              className="bento-card bento-peach"
+              style={{ minHeight: 0 }}
+            >
+              <div className="bento-icon">
+                <CalendarHeart aria-hidden="true" />
+              </div>
+              <div className="bento-copy">
+                <h3 style={{ fontSize: 28 }}>Celebraciones personales</h3>
+                <p>Bodas, cumpleaños y reuniones íntimas.</p>
+              </div>
+            </article>
+            <article
+              className="bento-card bento-cream"
+              style={{ minHeight: 0 }}
+            >
+              <div className="bento-icon">
+                <Building2 aria-hidden="true" />
+              </div>
+              <div className="bento-copy">
+                <h3 style={{ fontSize: 28 }}>Eventos empresariales</h3>
+                <p>Empresa y RNC en la solicitud cuando aplique factura.</p>
+              </div>
+            </article>
+          </div>
+        </Reveal>
+
+        {/* Testimonials Section */}
+        <section className="section-muted" aria-labelledby="testimonials-title">
+          <div className="section-inner">
+            <Reveal className="section-heading-row">
+              <div className="section-heading" style={{ marginBottom: 0 }}>
+                <p className="eyebrow">Prueba social y confianza</p>
+                <h2 id="testimonials-title">
+                  Lo que dicen quienes ya celebraron
+                </h2>
+                <p>
+                  Historias y experiencias reales de clientes que confiaron su
+                  evento a Mister Fiestas en Santo Domingo.
+                </p>
+              </div>
+              <Link className="section-link" href="/galeria">
+                Ver galería de fotos <ArrowRight aria-hidden="true" />
+              </Link>
+            </Reveal>
+
+            <RevealStagger className="testimonial-grid">
+              {sampleTestimonials.map((t) => (
+                <RevealItem key={t.id}>
+                  <TestimonialCard testimonial={t} />
+                </RevealItem>
+              ))}
+            </RevealStagger>
+          </div>
+        </section>
+
+        {/* Quote Band */}
+        <Reveal className="quote-band">
+          <div>
+            <p className="eyebrow">Listo cuando tú estés</p>
+            <h2>Cotiza en 4 pasos.</h2>
+            <p>
+              Selecciona servicios, revisa el resumen estimado y solicita
+              confirmación rápida por WhatsApp. Sin pagos automáticos.
+            </p>
+          </div>
+          <Link className="button button-dark" href="/cotizar">
+            Empezar cotización <ArrowRight aria-hidden="true" />
+          </Link>
+        </Reveal>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

@@ -12,7 +12,7 @@ Este documento registra las respuestas y decisiones clave tomadas por el cliente
    - _Decisión:_ El tiempo mínimo de anticipación para reservar una actividad a través de la web es de **72 horas**.
 
 4. **Gestión de las solicitudes (Cotizaciones):**
-   - _Decisión:_ El cliente prefiere que el formulario web envíe la solicitud directamente a su número de WhatsApp para entablar una conversación directa.
+   - _Decisión:_ El cliente prefiere que el formulario web envíe la solicitud directamente a su número de WhatsAp[[Git-Daily-Flow]]p para entablar una conversación directa.
 
 5. **Requisitos para clientes corporativos (B2B):**
    - _Decisión:_ No se requieren datos adicionales. El "Nombre de la Empresa" y el "RNC" son suficientes.
