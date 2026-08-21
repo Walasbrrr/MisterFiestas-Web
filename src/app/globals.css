@@ -407,7 +407,9 @@ h1 span {
   border-radius: 30px;
   scroll-snap-align: start;
   box-shadow: 0 18px 44px rgb(91 56 43 / 7%);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 .carousel-card:hover {
   transform: translateY(-6px);
@@ -720,8 +722,17 @@ footer {
   height: 20px;
 }
 @keyframes fab-pulse {
-  0%, 100% { box-shadow: 0 8px 32px rgb(236 109 32 / 35%), 0 2px 8px rgb(0 0 0 / 12%); }
-  50% { box-shadow: 0 8px 48px rgb(236 109 32 / 55%), 0 2px 12px rgb(0 0 0 / 18%); }
+  0%,
+  100% {
+    box-shadow:
+      0 8px 32px rgb(236 109 32 / 35%),
+      0 2px 8px rgb(0 0 0 / 12%);
+  }
+  50% {
+    box-shadow:
+      0 8px 48px rgb(236 109 32 / 55%),
+      0 2px 12px rgb(0 0 0 / 18%);
+  }
 }
 
 /* ══════════════════════════════════════════════
@@ -777,7 +788,11 @@ footer {
   gap: 16px;
   padding: 24px 32px 20px;
   border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgb(241 211 186 / 30%) 0%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(241 211 186 / 30%) 0%,
+    transparent 100%
+  );
 }
 .reservation-header-left {
   display: flex;
@@ -991,7 +1006,8 @@ footer {
 .calendar-cell-partial {
   color: var(--espresso);
 }
-.calendar-cell-available {}
+.calendar-cell-available {
+}
 .calendar-cell-selected {
   color: white !important;
   background: var(--orange) !important;
@@ -1173,7 +1189,11 @@ footer {
   gap: 10px;
   padding: 12px 18px;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, rgb(241 211 186 / 50%), rgb(241 211 186 / 25%));
+  background: linear-gradient(
+    135deg,
+    rgb(241 211 186 / 50%),
+    rgb(241 211 186 / 25%)
+  );
   border: 1px solid rgb(118 95 87 / 10%);
   border-radius: 14px;
   font-size: 14px;
@@ -1328,8 +1348,12 @@ footer {
   animation: success-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 @keyframes success-pop {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .success-content h3 {
   font-family: var(--font-display), sans-serif;
@@ -1398,7 +1422,11 @@ footer {
 /* ── Reservation Section (in-page) ── */
 .reservation-section {
   padding: 110px max(24px, calc((100% - 1260px) / 2));
-  background: linear-gradient(175deg, rgb(57 45 42 / 97%), rgb(57 45 42 / 100%));
+  background: linear-gradient(
+    175deg,
+    rgb(57 45 42 / 97%),
+    rgb(57 45 42 / 100%)
+  );
   position: relative;
   overflow: hidden;
 }
