@@ -14,6 +14,7 @@ Comandos: [Git-Daily-Flow.md](Git-Daily-Flow.md).
 - Desarrollo en **`dev`** · solo **Walen** en **`main`**
 - Identificadores `(ejemplo)` son tareas, no ramas
 - CI informativo en cada push a `dev`; CI verde obligatorio antes de promover a `main`
+- **Sin force-push** a `dev` ni `main` (ruleset GitHub)
 
 ---
 
@@ -27,18 +28,18 @@ Comandos: [Git-Daily-Flow.md](Git-Daily-Flow.md).
 
 ## Fase 1 — Contenido del negocio
 
-| Tarea                                                                       | Responsable                                                                      |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [x] Decisiones iniciales del cliente                                        | Mario + equipo                                                                   |
-| [ ] [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md) completo | **Mario** (datos) · **Sebastián** (aprobación comercial)                         |
-| [ ] Combos/paquetes informativos (sin tienda)                               | **Sebastián**                                                                    |
-| [ ] Material visual real y accesos de Instagram                             | **Sebastián**                                                                    |
-| [ ] Evaluar integración de Instagram para alimentar galería                 | **Walen** + **Sebastián**                                                        |
-| [ ] Carga manual de imágenes no cubiertas por la integración                | **Sebastián** + equipo                                                           |
-| [ ] Evaluar Google Maps como fuente de testimonios reales                   | **Sebastián** + **David**                                                        |
-| [ ] Textos Nosotros, FAQ, eventos, empresas                                 | **Sebastián** · revisión **David**                                               |
-| [ ] Número WhatsApp + plantilla mensaje                                     | **Sebastián** → ver [WhatsApp-Assistant.md](../01-Product/WhatsApp-Assistant.md) |
-| [ ] `src/content/services.ts` actualizado                                   | **Mario**                                                                        |
+| Tarea                                                          | Responsable                                                                      |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [x] Decisiones iniciales del cliente                           | Mario + equipo                                                                   |
+| [x] Catálogo y precios documentados (14 servicios)             | **Sebastián** (carga) · **Mario** (mantenimiento)                                |
+| [ ] Combos/paquetes informativos (sin tienda)                  | **Sebastián**                                                                    |
+| [ ] Material visual real y accesos de Instagram                | **Sebastián**                                                                    |
+| [ ] Evaluar integración de Instagram para alimentar galería    | **Walen** + **Sebastián**                                                        |
+| [ ] Carga manual de imágenes no cubiertas por la integración   | **Sebastián** + equipo                                                           |
+| [ ] Evaluar Google Maps como fuente de testimonios reales      | **Sebastián** + **David**                                                        |
+| [ ] Textos Nosotros, FAQ, eventos, empresas                    | **Sebastián** · revisión **David**                                               |
+| [ ] Número WhatsApp + plantilla mensaje                        | **Sebastián** → ver [WhatsApp-Assistant.md](../01-Product/WhatsApp-Assistant.md) |
+| [x] `src/content/services.ts` catálogo oficial (14 publicados) | **Sebastián** (ago. 2026) · **Mario** (mantenimiento)                            |
 
 ---
 

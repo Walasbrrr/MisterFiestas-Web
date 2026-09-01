@@ -49,5 +49,9 @@ La documentación comienza en [Documentation/README.md](Documentation/README.md)
 cp .env.example .env.local
 ```
 
-Completa solo las integraciones que se vayan activando. Las claves privadas de pagos
-y autenticación pertenecen al backend, nunca al navegador.
+Completa `NEXT_PUBLIC_SITE_URL` y, cuando exista, `NEXT_PUBLIC_WHATSAPP_NUMBER`.
+`NEXT_PUBLIC_API_URL` apunta al backend de galería (opcional). Si no responde,
+`/galeria` muestra ejemplos locales. Pagos, JWT y `DATABASE_URL` del frontend
+son legado post-MVP.
+
+La API Java está en [`backend/`](backend/README.md). No hace falta para cotizar.

@@ -10,7 +10,7 @@ Especificación detallada de campos y plantilla:
 3. Inicia el asistente (desde Home, `/cotizar`, detalle de servicio o calendario).
 4. **Selecciona en la web:**
    - Fecha preferida (y opcionalmente hora).
-   - Servicios o paquetes de interés.
+   - Servicios de interés (catálogo publicado; paquetes aún no listados).
    - Tipo de evento (particular / empresa).
    - Datos básicos: nombre, teléfono, invitados, comentarios.
 5. Revisa un resumen y pulsa **«Continuar en WhatsApp»**.
@@ -29,7 +29,7 @@ Abrir wa.me prellenado    →    Conversación humana
 ## CTAs rápidos (sin asistente)
 
 En hero, footer o detalle de un solo servicio también puede haber enlaces directos
-a WhatsApp con mensaje corto prellenado (ej. «Hola, me interesa el Túnel Infinito»).
+a WhatsApp con mensaje corto prellenado (ej. «Hola, me interesa el Túnel Infinito LED»).
 
 ## Rol de la web vs WhatsApp
 
@@ -47,7 +47,7 @@ Hola, vengo desde misterfiestas.com y me gustaría cotizar:
 
 • Fecha preferida: 15 de noviembre de 2026, 18:00
 • Tipo de evento: Cumpleaños
-• Servicios: Túnel Infinito, DJ
+• Servicios: Túnel Infinito LED, VideoBooth 360
 • Invitados: ~80
 • Nombre: Juan Pérez
 • Teléfono: 809-555-0199

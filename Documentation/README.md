@@ -39,11 +39,19 @@
 - [Tech stack](04-Architecture/Tech-Stack.md)
 - [Estructura técnica](04-Architecture/Technical-Structure.md)
 - [Modelo de datos](04-Architecture/Data-Model.md)
-- [API (diferida)](04-Architecture/API-Contract.md)
+- [API (galería implementada; resto borrador)](04-Architecture/API-Contract.md)
 - [Integraciones](04-Architecture/Integrations-and-Secrets.md)
 - [Decisiones](04-Architecture/Decisions.md)
+
+### Legal y contenido
+
+- [**Acuerdo de autorización**](05-Legal/Content-Authorization-Agreement.md) — el dueño lo acepta una vez por correo
+- [Cumplimiento legal](05-Legal/Legal-and-Content-Compliance.md) — landing, sin subida de fotos
+- [**Procedimiento del proyecto**](05-Legal/Legal-Project-Procedure.md) — checklist de lo que debe tener
 
 ## Mantenimiento
 
 - Contenido en `src/content/` · decisiones en `Documentation/`
 - Fase 4 (código WhatsApp): **pausada** hasta número + plantilla del cliente
+- Catálogo publicado: 14 servicios en `src/content/services.ts` — ver [Catálogo y precios](01-Product/Catalog-and-Pricing.md)
+- Galería Instagram: backend opcional en `backend/`; sin API, `/galeria` usa ejemplos locales

@@ -2,8 +2,8 @@ import type { Service } from "@/types/service";
 
 /**
  * Array of services offered by MisterFiestas.
- * @see ../../../Documentation/01-Product/Catalog-and-Pricing.md for the source of truth
- * and pending confirmations for this data.
+ * Published catalog: items without `outOfCatalog`.
+ * @see ../../../Documentation/01-Product/Catalog-and-Pricing.md
  */
 export const services: Service[] = [
   {

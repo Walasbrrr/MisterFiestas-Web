@@ -17,7 +17,9 @@ La paleta de colores de MisterFiestas está diseñada para transmitir calidez, c
 | `--taupe`      | Taupe      | `#765f57` | Texto secundario (muted), detalles sutiles           |
 | `--line`       | Line       | `#d9b7a4` | Bordes, divisores, inputs                            |
 
-_Nota: La aplicación está configurada con `color-scheme: light`._
+_Nota: el tema por defecto es claro (`color-scheme: light`). El modo oscuro
+(*Warm Luxury Dark*) se activa con `ThemeToggle` (`[data-theme="dark"]`) y
+sigue los tokens documentados en el Changelog._
 
 ## Tipografía
 

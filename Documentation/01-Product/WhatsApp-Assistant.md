@@ -22,19 +22,19 @@ La web **no guarda** la solicitud en base de datos ni confirma la reserva.
 
 ## Campos a recolectar
 
-| Campo                   | Obligatorio | Dónde se captura                  | Va en el mensaje |
-| ----------------------- | ----------- | --------------------------------- | ---------------- |
-| Fecha preferida         | Sí          | Calendario / paso 1               | Sí               |
-| Hora preferida          | Recomendado | Calendario / paso 1               | Sí               |
-| Servicios               | Sí (≥1)     | `/cotizar`, detalle, carrito demo | Sí               |
-| Tipo de evento          | Sí          | Asistente                         | Sí               |
-| Particular / Empresa    | Sí          | Asistente                         | Sí               |
-| Nombre                  | Sí          | Asistente                         | Sí               |
-| Teléfono                | Sí          | Asistente                         | Sí               |
-| Email                   | Opcional    | Asistente                         | Sí si existe     |
-| Invitados               | Recomendado | Asistente                         | Sí               |
-| Empresa + RNC           | Si B2B      | Asistente                         | Sí               |
-| Comentarios / ubicación | Opcional    | Asistente                         | Sí               |
+| Campo                   | Obligatorio | Dónde se captura                | Va en el mensaje |
+| ----------------------- | ----------- | ------------------------------- | ---------------- |
+| Fecha preferida         | Sí          | Calendario / paso 1             | Sí               |
+| Hora preferida          | Recomendado | Calendario / paso 1             | Sí               |
+| Servicios               | Sí (≥1)     | `/cotizar`, detalle de servicio | Sí               |
+| Tipo de evento          | Sí          | Asistente                       | Sí               |
+| Particular / Empresa    | Sí          | Asistente                       | Sí               |
+| Nombre                  | Sí          | Asistente                       | Sí               |
+| Teléfono                | Sí          | Asistente                       | Sí               |
+| Email                   | Opcional    | Asistente                       | Sí si existe     |
+| Invitados               | Recomendado | Asistente                       | Sí               |
+| Empresa + RNC           | Si B2B      | Asistente                       | Sí               |
+| Comentarios / ubicación | Opcional    | Asistente                       | Sí               |
 
 ---
 
@@ -107,5 +107,6 @@ Ver [Integrations-and-Secrets.md](../04-Architecture/Integrations-and-Secrets.md
 | Helper `buildWhatsAppUrl`                 | ⏸ Pausado                        |
 | Copy «Continuar en WhatsApp»              | ⏸ Pausado                        |
 | Número en `.env` producción               | ⏳ Pendiente del cliente         |
+| `/cotizar` enlace `wa.me/?text=`          | ⚠️ Existe, **sin número**        |
 
 Roadmap: [Git-Workflow.md](../00-Project/Git-Workflow.md) — Fase 4.

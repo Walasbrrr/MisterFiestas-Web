@@ -22,11 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: path === "" ? 1 : 0.8,
     })),
-    ...services.map((service) => ({
-      url: `${siteConfig.url}/servicios/${service.slug}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
+    ...services
+      .filter((service) => !service.outOfCatalog)
+      .map((service) => ({
+        url: `${siteConfig.url}/servicios/${service.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
   ];
 }

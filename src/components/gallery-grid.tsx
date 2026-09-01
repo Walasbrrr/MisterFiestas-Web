@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Eye, Sparkles, X, RefreshCw } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { ArrowRight, Eye, RefreshCw, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import {
+  galleryDemoFilters,
+  galleryDemoItems,
+  type GalleryDemoItem,
+} from "@/content/gallery-demo";
+import { getPublicApiUrl } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 type ApiMediaItem = {
@@ -16,49 +23,71 @@ type ApiMediaItem = {
   likeCount: number;
 };
 
-const galleryFilters = [
+const instagramFilters = [
   { id: "ALL", label: "Todos" },
   { id: "IMAGE", label: "Fotos" },
   { id: "VIDEO", label: "Videos" },
   { id: "CAROUSEL_ALBUM", label: "Álbumes" },
 ];
 
-const BACKEND_URL = "http://localhost:8080";
-
 export function GalleryGrid() {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const apiUrl = getPublicApiUrl();
+  const [activeType, setActiveType] = useState("ALL");
   const [items, setItems] = useState<ApiMediaItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<ApiMediaItem | null>(null);
-
-  async function fetchGallery(type: string) {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(
-        `${BACKEND_URL}/api/v1/gallery?page=0&size=44&type=${type}`,
-        { cache: "no-store" }
-      );
-      if (!res.ok) throw new Error(`Error ${res.status}`);
-      const json = await res.json();
-      setItems(json.data?.content ?? []);
-    } catch (e) {
-      setError("No se pudo conectar con el servidor. Asegúrate de que el backend está corriendo.");
-      setItems([]);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [loading, setLoading] = useState(Boolean(apiUrl));
+  const [useDemo, setUseDemo] = useState(!apiUrl);
+  const [selectedMedia, setSelectedMedia] = useState<ApiMediaItem | null>(null);
+  const [selectedDemo, setSelectedDemo] = useState<GalleryDemoItem | null>(
+    null,
+  );
+  const [activeDemoCategory, setActiveDemoCategory] = useState("all");
 
   useEffect(() => {
-    fetchGallery(activeCategory);
-  }, [activeCategory]);
+    if (!apiUrl) return;
 
-  // Handle escape key to close modal
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 4000);
+
+    fetch(`${apiUrl}/api/v1/gallery?page=0&size=44&type=${activeType}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`Error ${res.status}`);
+        return res.json();
+      })
+      .then((json: { data?: { content?: ApiMediaItem[] } }) => {
+        if (cancelled) return;
+        setItems(json.data?.content ?? []);
+        setUseDemo(false);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setItems([]);
+        setUseDemo(true);
+        setLoading(false);
+      })
+      .finally(() => {
+        window.clearTimeout(timeoutId);
+      });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      controller.abort();
+    };
+  }, [activeType, apiUrl]);
+
+  const selectedItem = selectedMedia ?? selectedDemo;
+
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setSelectedItem(null);
+      if (e.key === "Escape") {
+        setSelectedMedia(null);
+        setSelectedDemo(null);
+      }
     }
     if (selectedItem) {
       window.addEventListener("keydown", onKeyDown);
@@ -73,72 +102,296 @@ export function GalleryGrid() {
   }, [selectedItem]);
 
   const previewUrl = (item: ApiMediaItem) =>
-    item.mediaType === "VIDEO" ? (item.thumbnailUrl ?? item.mediaUrl) : item.mediaUrl;
+    item.mediaType === "VIDEO"
+      ? (item.thumbnailUrl ?? item.mediaUrl)
+      : item.mediaUrl;
+
+  const filteredDemo = useMemo(() => {
+    if (activeDemoCategory === "all") return galleryDemoItems;
+    return galleryDemoItems.filter(
+      (item) => item.category === activeDemoCategory,
+    );
+  }, [activeDemoCategory]);
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          padding: "60px 0",
+          color: "var(--taupe)",
+        }}
+      >
+        <RefreshCw
+          style={{
+            width: 32,
+            height: 32,
+            margin: "0 auto 12px",
+            animation: "spin 1s linear infinite",
+          }}
+        />
+        <p>Cargando galería...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
+
+  if (useDemo) {
+    return (
+      <>
+        {apiUrl ? (
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: 24,
+              color: "var(--taupe)",
+              fontSize: 14,
+            }}
+          >
+            El feed de Instagram no está disponible. Mostramos ejemplos locales.
+          </p>
+        ) : null}
+
+        <div
+          className="filter-row"
+          role="tablist"
+          aria-label="Filtrar galería de fotos"
+        >
+          {galleryDemoFilters.map((filter) => {
+            const count =
+              filter.id === "all"
+                ? galleryDemoItems.length
+                : galleryDemoItems.filter((item) => item.category === filter.id)
+                    .length;
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                role="tab"
+                aria-selected={activeDemoCategory === filter.id}
+                className={cn(
+                  "filter-chip",
+                  activeDemoCategory === filter.id && "is-active",
+                )}
+                onClick={() => setActiveDemoCategory(filter.id)}
+              >
+                {filter.label} ({count})
+              </button>
+            );
+          })}
+        </div>
+
+        <section className="gallery-grid" aria-label="Fotos de eventos">
+          {filteredDemo.map((item) => (
+            <article
+              key={item.id}
+              className="gallery-card"
+              onClick={() => setSelectedDemo(item)}
+              tabIndex={0}
+              role="button"
+              aria-label={`Ver detalle de ${item.title}`}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedDemo(item);
+                }
+              }}
+            >
+              <div className="gallery-card-bg" aria-hidden="true">
+                <Sparkles
+                  style={{ width: 120, height: 120, color: "var(--orange)" }}
+                />
+              </div>
+
+              <div className="gallery-card-content">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 8,
+                  }}
+                >
+                  <span
+                    className="chip"
+                    style={{ fontSize: 10, padding: "2px 8px" }}
+                  >
+                    {item.categoryLabel}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: "var(--orange)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                    }}
+                  >
+                    <Eye style={{ width: 14, height: 14 }} aria-hidden="true" />
+                    Ver foto
+                  </span>
+                </div>
+                <h3>{item.title}</h3>
+                <p
+                  style={{
+                    margin: "4px 0 0",
+                    fontSize: 13,
+                    color: "var(--taupe)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {item.highlightTag}
+                </p>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <AnimatePresence>
+          {selectedDemo ? (
+            <motion.div
+              className="lightbox-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedDemo(null)}
+            >
+              <motion.div
+                className="lightbox-modal"
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.94, opacity: 0 }}
+                transition={{ type: "spring", damping: 26, stiffness: 320 }}
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-label={selectedDemo.title}
+              >
+                <div className="lightbox-header">
+                  <div>
+                    <span className="chip">{selectedDemo.categoryLabel}</span>
+                    <h2 style={{ fontSize: 24, marginTop: 6 }}>
+                      {selectedDemo.title}
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    className="menu-toggle"
+                    onClick={() => setSelectedDemo(null)}
+                    aria-label="Cerrar vista previa"
+                  >
+                    <X aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="lightbox-media">
+                  <Sparkles aria-hidden="true" />
+                </div>
+
+                <div className="lightbox-body">
+                  <p>{selectedDemo.description}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      paddingTop: 12,
+                      borderTop: "1px solid rgb(223 192 178 / 40%)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: "var(--taupe)",
+                      }}
+                    >
+                      Evento: {selectedDemo.highlightTag}
+                    </span>
+                    <Link
+                      className="button button-small"
+                      href={
+                        selectedDemo.serviceSlug
+                          ? `/cotizar?add=${selectedDemo.serviceSlug}`
+                          : "/cotizar"
+                      }
+                    >
+                      Cotizar este servicio <ArrowRight aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </>
+    );
+  }
 
   return (
     <>
-      {/* Category filters */}
-      <div className="filter-row" role="tablist" aria-label="Filtrar galería de fotos">
-        {galleryFilters.map((filter) => (
+      <div
+        className="filter-row"
+        role="tablist"
+        aria-label="Filtrar galería de fotos"
+      >
+        {instagramFilters.map((filter) => (
           <button
             key={filter.id}
             type="button"
             role="tab"
-            aria-selected={activeCategory === filter.id}
-            className={cn("filter-chip", activeCategory === filter.id && "is-active")}
-            onClick={() => setActiveCategory(filter.id)}
+            aria-selected={activeType === filter.id}
+            className={cn(
+              "filter-chip",
+              activeType === filter.id && "is-active",
+            )}
+            onClick={() => {
+              setActiveType(filter.id);
+              setLoading(true);
+              setUseDemo(false);
+            }}
           >
             {filter.label}
           </button>
         ))}
       </div>
 
-      {/* Loading state */}
-      {loading && (
-        <div style={{ textAlign: "center", padding: "60px 0", color: "var(--taupe)" }}>
-          <RefreshCw style={{ width: 32, height: 32, margin: "0 auto 12px", animation: "spin 1s linear infinite" }} />
-          <p>Cargando galería...</p>
-        </div>
-      )}
-
-      {/* Error state */}
-      {error && !loading && (
-        <div style={{ textAlign: "center", padding: "60px 0", color: "var(--orange)" }}>
-          <p style={{ marginBottom: 12 }}>{error}</p>
-          <button className="button button-small" onClick={() => fetchGallery(activeCategory)}>
-            Reintentar
-          </button>
-        </div>
-      )}
-
-      {/* Empty state */}
-      {!loading && !error && items.length === 0 && (
-        <div style={{ textAlign: "center", padding: "60px 0", color: "var(--taupe)" }}>
+      {items.length === 0 ? (
+        <div
+          style={{
+            textAlign: "center",
+            padding: "60px 0",
+            color: "var(--taupe)",
+          }}
+        >
           <Sparkles style={{ width: 40, height: 40, margin: "0 auto 12px" }} />
           <p>No hay fotos en esta categoría todavía.</p>
         </div>
-      )}
-
-      {/* Gallery cards */}
-      {!loading && !error && items.length > 0 && (
+      ) : (
         <section className="gallery-grid" aria-label="Fotos de eventos">
           {items.map((item) => (
             <article
               key={item.id}
               className="gallery-card"
-              onClick={() => setSelectedItem(item)}
+              onClick={() => setSelectedMedia(item)}
               tabIndex={0}
               role="button"
-              aria-label={`Ver detalle del post`}
+              aria-label="Ver detalle del post"
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  setSelectedItem(item);
+                  setSelectedMedia(item);
                 }
               }}
-              style={{ cursor: "pointer", position: "relative", overflow: "hidden" }}
+              style={{
+                cursor: "pointer",
+                position: "relative",
+                overflow: "hidden",
+              }}
             >
-              {/* Real Instagram image */}
               <div
                 style={{
                   position: "absolute",
@@ -150,16 +403,15 @@ export function GalleryGrid() {
                 }}
                 aria-hidden="true"
               />
-              {/* Overlay */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)",
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)",
                 }}
                 aria-hidden="true"
               />
-              {/* Video badge */}
               {item.mediaType === "VIDEO" && (
                 <span
                   style={{
@@ -197,18 +449,51 @@ export function GalleryGrid() {
                 </span>
               )}
 
-              <div className="gallery-card-content" style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                  <span className="chip" style={{ fontSize: 10, padding: "2px 8px" }}>
+              <div
+                className="gallery-card-content"
+                style={{ position: "relative", zIndex: 1 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: 8,
+                  }}
+                >
+                  <span
+                    className="chip"
+                    style={{ fontSize: 10, padding: "2px 8px" }}
+                  >
                     Instagram
                   </span>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "var(--orange)", display: "flex", alignItems: "center", gap: 4 }}>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: "var(--orange)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                    }}
+                  >
                     <Eye style={{ width: 14, height: 14 }} aria-hidden="true" />
                     Ver foto
                   </span>
                 </div>
                 {item.caption && (
-                  <p style={{ margin: "6px 0 0", fontSize: 12, color: "#fff", lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                  <p
+                    style={{
+                      margin: "6px 0 0",
+                      fontSize: 12,
+                      color: "#fff",
+                      lineHeight: 1.4,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}
+                  >
                     {item.caption}
                   </p>
                 )}
@@ -218,15 +503,14 @@ export function GalleryGrid() {
         </section>
       )}
 
-      {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedItem ? (
+        {selectedMedia ? (
           <motion.div
             className="lightbox-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedItem(null)}
+            onClick={() => setSelectedMedia(null)}
           >
             <motion.div
               className="lightbox-modal"
@@ -243,48 +527,83 @@ export function GalleryGrid() {
                 <div>
                   <span className="chip">Instagram</span>
                   <h2 style={{ fontSize: 18, marginTop: 6 }}>
-                    {selectedItem.caption
-                      ? selectedItem.caption.slice(0, 60) + (selectedItem.caption.length > 60 ? "…" : "")
+                    {selectedMedia.caption
+                      ? selectedMedia.caption.slice(0, 60) +
+                        (selectedMedia.caption.length > 60 ? "…" : "")
                       : "Post de Mister Fiestas"}
                   </h2>
                 </div>
                 <button
                   type="button"
                   className="menu-toggle"
-                  onClick={() => setSelectedItem(null)}
+                  onClick={() => setSelectedMedia(null)}
                   aria-label="Cerrar vista previa"
                 >
                   <X aria-hidden="true" />
                 </button>
               </div>
 
-              <div className="lightbox-media" style={{ padding: 0, overflow: "hidden", borderRadius: 8, maxHeight: 420 }}>
-                {selectedItem.mediaType === "VIDEO" ? (
+              <div
+                className="lightbox-media"
+                style={{
+                  padding: 0,
+                  overflow: "hidden",
+                  borderRadius: 8,
+                  maxHeight: 420,
+                }}
+              >
+                {selectedMedia.mediaType === "VIDEO" ? (
                   <video
-                    src={selectedItem.mediaUrl}
-                    poster={selectedItem.thumbnailUrl ?? undefined}
+                    src={selectedMedia.mediaUrl}
+                    poster={selectedMedia.thumbnailUrl ?? undefined}
                     controls
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
                   />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={previewUrl(selectedItem)}
-                    alt={selectedItem.caption ?? "Post de Mister Fiestas"}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    src={previewUrl(selectedMedia)}
+                    alt={selectedMedia.caption ?? "Post de Mister Fiestas"}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
                   />
                 )}
               </div>
 
               <div className="lightbox-body">
-                {selectedItem.caption && <p>{selectedItem.caption}</p>}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, paddingTop: 12, borderTop: "1px solid rgb(223 192 178 / 40%)" }}>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: "var(--taupe)" }}>
-                    ❤️ {selectedItem.likeCount} me gusta
+                {selectedMedia.caption && <p>{selectedMedia.caption}</p>}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: 12,
+                    paddingTop: 12,
+                    borderTop: "1px solid rgb(223 192 178 / 40%)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 700,
+                      color: "var(--taupe)",
+                    }}
+                  >
+                    ❤️ {selectedMedia.likeCount} me gusta
                   </span>
                   <a
                     className="button button-small"
-                    href={selectedItem.permalink}
+                    href={selectedMedia.permalink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

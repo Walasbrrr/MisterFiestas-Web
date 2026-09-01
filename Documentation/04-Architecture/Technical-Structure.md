@@ -2,33 +2,35 @@
 
 ## Decisión actual
 
-Una sola aplicación **Next.js** en la raíz del repositorio. Contenido comercial en
-`src/content/` y componentes en `src/components/`. Sin backend ni base de datos para
-el lanzamiento de la landing.
+Una aplicación **Next.js** en la raíz. Contenido comercial en `src/content/`.
+La conversión sigue siendo WhatsApp. `backend/` (Spring Boot) es **opcional**:
+sirve el feed de Instagram para `/galeria`. La landing arranca sin él.
 
 ```text
 mister-fiestas/
-├── backend/            # Reservado; no requerido para el MVP
+├── backend/            # API galería Instagram (opcional para el MVP)
 ├── Documentation/
 ├── public/
 │   └── images/
 ├── src/
-│   ├── app/            # Rutas (landing, servicios, galería, etc.)
+│   ├── app/            # Rutas (landing, servicios, cotizar, galería, …)
 │   ├── components/
-│   ├── content/        # Servicios y textos tipados
-│   ├── lib/            # site config, nav, helpers WhatsApp
+│   ├── content/        # Catálogo tipado (services.ts)
+│   ├── lib/            # site config, nav, URL de API; helper WhatsApp pendiente
 │   └── types/
 ├── package.json
 └── README.md
 ```
 
+`src/app/tienda/page.tsx` solo hace redirect permanente a `/cotizar`.
+
 ## Conversión
 
-La lógica de negocio de cotización, reserva y pago **no vive en el frontend**. La
-web enlaza a WhatsApp; el dueño cierra en el canal habitual.
+La lógica de cobro y confirmación de fecha **no vive en el frontend**. `/cotizar`
+y el calendario recolectan datos; el dueño cierra en WhatsApp. El helper
+`buildWhatsAppUrl` aún no existe.
 
 ## Evolución post-MVP
 
-Si más adelante se necesita persistir leads, inventario o pagos, se evaluará
-`backend/` (Spring Boot) y posible separación `apps/web`. No anticipar esa migración
-hasta que el negocio lo requiera.
+Leads, inventario o pagos se evaluarían **ampliando** este `backend/`, no
+como requisito para publicar la landing.

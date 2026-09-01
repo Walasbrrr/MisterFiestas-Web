@@ -11,14 +11,18 @@ y **armar un mensaje de WhatsApp** para que el cliente solo pulse enviar.
 
 ## Incluido
 
-- Home con propuesta de valor, servicios destacados, prueba social y CTAs claros.
-- Catálogo informativo de servicios (`/servicios` y detalle por slug).
-- Páginas de contexto: eventos, empresas, galería, nosotros y contacto.
-- Galería con material real coordinado por Sebastián: integración de Instagram si
-  resulta viable y carga manual para el resto de las imágenes.
+- Home con propuesta de valor, spotlight del Túnel Infinito LED, servicios
+  destacados, prueba social, calendario de fecha preferida y CTAs a `/cotizar`.
+- Catálogo informativo de servicios (`/servicios` y detalle por slug), con 14
+  ítems publicados y el resto marcado `outOfCatalog`.
+- Páginas de contexto: eventos, empresas, galería, nosotros y contacto (copy real
+  pendiente en varias). `/tienda` no es tienda: redirect a `/cotizar`.
+- Galería: feed de Instagram vía `backend/` si está disponible; si no, ejemplos
+  locales. Material real sigue a cargo de Sebastián.
 - Google Maps como fuente candidata de testimonios reales; confirmar su viabilidad y
   requisitos de atribución antes de publicar reseñas.
-- Precios orientativos o “desde” cuando el cliente los apruebe (sin checkout).
+- Precios orientativos en RD$ (y planes) tomados del catálogo oficial; el monto
+  final se confirma en WhatsApp. Sin checkout.
 - **Asistente de contacto:** el usuario elige fecha, servicios y datos básicos; la web
   genera un **mensaje prellenado** y abre WhatsApp (`wa.me`) para que solo confirme
   con «Enviar».

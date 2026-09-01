@@ -37,8 +37,9 @@ Decisiones clave sobre el modelo de negocio y los flujos operativos.
      `https://misterfiestas.com`.
 
 8. **Prioridad comercial:**
-   - _Decisión:_ El **Túnel Infinito** es el servicio principal que debe priorizarse
-     visual y comercialmente. Mariachis permanece en la oferta, pero no es la prioridad.
+   - _Decisión:_ El **Túnel Infinito LED** es el servicio principal que debe
+     priorizarse visual y comercialmente. Mariachis permanece en la oferta, pero
+     no es la prioridad.
 
 9. **Imágenes y galería:**
    - _Decisión:_ Sebastián coordina el material visual. Se investigará una integración
@@ -48,6 +49,11 @@ Decisiones clave sobre el modelo de negocio y los flujos operativos.
 10. **Testimonios:**
     - _Propuesta por confirmar:_ usar reseñas reales de Google Maps. Antes de
       publicarlas se debe validar el método de acceso, autenticidad, texto y atribución.
+
+11. **Catálogo publicado (ago. 2026):**
+    - _Estado:_ 14 servicios reales en `src/content/services.ts` (fotografía,
+      mariachis, Navidad). Precios orientativos en RD$. Combos/paquetes y fotos
+      de ficha siguen pendientes.
 
 ## Supersedidas (dirección anterior)
 

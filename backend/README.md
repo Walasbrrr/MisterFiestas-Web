@@ -8,21 +8,23 @@ API REST para el sitio web de Mister Fiestas, construida con **Spring Boot 3.4**
 
 El backend está **funcional y probado en desarrollo local**. La galería de Instagram sincroniza correctamente con la Graph API de Meta y sirve los medios cacheados al frontend Next.js.
 
+La landing **no requiere** este backend para cotizar. `/galeria` llama a `NEXT_PUBLIC_API_URL`; si la API no está, muestra ejemplos locales.
+
 > **Base de datos en desarrollo:** Se puede usar H2 en memoria para desarrollo local sin necesidad de Docker (ver sección de inicio rápido). Para producción se requiere PostgreSQL.
 
 ---
 
 ## Stack
 
-| Tecnología | Uso |
-|---|---|
-| Java 25 + Spring Boot 3.4.5 | Framework principal |
-| Spring Data JPA | Acceso a base de datos |
-| PostgreSQL 16 (producción) / H2 (dev local) | Base de datos |
-| Flyway | Migraciones de base de datos |
-| Spring Security | Seguridad de endpoints |
-| OpenAPI / Swagger | Documentación interactiva de la API |
-| Maven Wrapper (`mvnw.cmd`) | Build sin instalar Maven |
+| Tecnología                                  | Uso                                 |
+| ------------------------------------------- | ----------------------------------- |
+| Java 25 + Spring Boot 3.4.5                 | Framework principal                 |
+| Spring Data JPA                             | Acceso a base de datos              |
+| PostgreSQL 16 (producción) / H2 (dev local) | Base de datos                       |
+| Flyway                                      | Migraciones de base de datos        |
+| Spring Security                             | Seguridad de endpoints              |
+| OpenAPI / Swagger                           | Documentación interactiva de la API |
+| Maven Wrapper (`mvnw.cmd`)                  | Build sin instalar Maven            |
 
 ---
 
@@ -33,6 +35,7 @@ El backend está **funcional y probado en desarrollo local**. La galería de Ins
 Sincroniza el feed de Instagram y cachea los medios en la base de datos. El frontend consume los datos desde la API local, sin depender de Instagram en tiempo real.
 
 **Comportamiento:**
+
 - Sincronización automática cada **lunes a las 6:00 AM** (scheduler)
 - Sincronización manual disponible vía endpoint
 - Posts sin `media_url` (ej. CAROUSEL_ALBUM) usan `thumbnail_url` como fallback
@@ -40,11 +43,11 @@ Sincroniza el feed de Instagram y cachea los medios en la base de datos. El fron
 
 **Endpoints:**
 
-| Método | Ruta | Acceso | Descripción |
-|--------|------|--------|-------------|
-| `GET` | `/api/v1/gallery` | Público | Lista paginada de medios (soporta `?page=0&size=12&type=ALL`) |
-| `GET` | `/api/v1/gallery/{id}` | Público | Detalle de un medio por ID |
-| `POST` | `/api/v1/gallery/sync` | Público (solo dev) | Fuerza sincronización inmediata con Instagram |
+| Método | Ruta                   | Acceso             | Descripción                                                   |
+| ------ | ---------------------- | ------------------ | ------------------------------------------------------------- |
+| `GET`  | `/api/v1/gallery`      | Público            | Lista paginada de medios (soporta `?page=0&size=12&type=ALL`) |
+| `GET`  | `/api/v1/gallery/{id}` | Público            | Detalle de un medio por ID                                    |
+| `POST` | `/api/v1/gallery/sync` | Público (solo dev) | Fuerza sincronización inmediata con Instagram                 |
 
 **Tipos de medio soportados:** `IMAGE`, `VIDEO`, `CAROUSEL_ALBUM`
 
@@ -52,7 +55,7 @@ Sincroniza el feed de Instagram y cachea los medios en la base de datos. El fron
 
 ## Módulos planificados (próximas versiones)
 
-- **Reseñas de Google Maps:** Sincronización de reseñas del perfil de Google Business para mostrarlas en la página web. *(No implementado en esta versión)*
+- **Reseñas de Google Maps:** Sincronización de reseñas del perfil de Google Business para mostrarlas en la página web. _(No implementado en esta versión)_
 
 ---
 
@@ -115,11 +118,11 @@ Esto levanta PostgreSQL en `localhost:5432`. Luego usa la URL de PostgreSQL en `
 
 ## Verificación
 
-| URL | Descripción |
-|-----|-------------|
-| http://localhost:8080/api/v1/gallery | Lista de medios en JSON |
+| URL                                   | Descripción               |
+| ------------------------------------- | ------------------------- |
+| http://localhost:8080/api/v1/gallery  | Lista de medios en JSON   |
 | http://localhost:8080/swagger-ui.html | Documentación interactiva |
-| http://localhost:8080/actuator/health | Health check |
+| http://localhost:8080/actuator/health | Health check              |
 
 ---
 

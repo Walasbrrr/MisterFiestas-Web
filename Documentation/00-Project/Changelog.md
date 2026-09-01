@@ -4,12 +4,32 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 
 ## [Draft] - Agosto 2026
 
+### Legal y autorización de contenido (1 sep. 2026)
+
+- Versión **1.1:** landing sin subida de fotos. El dueño acepta el acuerdo **por correo**.
+- [Procedimiento del proyecto](../05-Legal/Legal-Project-Procedure.md): checklist de lo que debe tener antes de publicar.
+- [Acuerdo](../05-Legal/Content-Authorization-Agreement.md) y [cumplimiento](../05-Legal/Legal-and-Content-Compliance.md).
+
+### Mezcla local: backend de galería + docs alineadas (1 sep. 2026)
+
+- Se conservó el API Spring Boot de Mario (`backend/`, Instagram → `/api/v1/gallery`).
+- Se restauró la documentación alineada al catálogo publicado, rutas reales y WhatsApp.
+- `/galeria` usa la API si responde; si no, ejemplos locales. URL vía `NEXT_PUBLIC_API_URL`.
+- `dev` en GitHub queda protegida: sin force-push ni borrar la rama.
+
 ### Integración del Catálogo Oficial
 
 - **Contenido real:** Se integró el catálogo completo de Mister Fiestas con 14 servicios, incluyendo descripciones, precios en RD$, y requerimientos.
 - **Nuevas categorías:** Se agregaron las categorías `"fotografia"` y `"navidad"`.
 - **Estructura de precios:** Se extendió el modelo de datos para soportar múltiples planes por servicio (Ej. Sencillo, VIP, Full).
 - **Páginas de servicio actualizadas:** Se rediseñó la página de detalle (`/servicios/[slug]`) para renderizar extras, "Ideal para", planes dinámicos y un badge para servicios de temporada.
+
+### Alineación documental (31 ago. 2026)
+
+- Docs cruzadas con el código en `dev`: catálogo, rutas, nav, `/tienda` → `/cotizar`, y estado real de WhatsApp.
+- [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md) deja de ser un draft placeholder y lista los 14 servicios publicados.
+- [Data-Model.md](../04-Architecture/Data-Model.md) incluye planes, `seasonal`, `outOfCatalog` y aclara que el calendario demo **no se elimina**.
+- Se retiró la afirmación de que el número de WhatsApp ya estaba en `.env.local`; Fase 4 sigue pendiente.
 
 ### Inicialización y Documentación Base
 
@@ -67,10 +87,10 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 
 ### Frontend — flujo core visual
 
-- **Home rediseñada:** Hero full-bleed, nav alineada al sitemap (Servicios, Eventos, Empresas, Tienda, Nosotros, Contacto) y bento de especialidades con motion (`Reveal` / stagger).
+- **Home rediseñada:** Hero full-bleed, nav alineada al sitemap (Servicios, Eventos, Empresas, Galería, Nosotros, Contacto) y bento de especialidades con motion (`Reveal` / stagger). En una versión anterior la nav incluía Tienda; esa entrada ya no existe.
 - **Catálogo y detalle:** Rutas `/servicios` y `/servicios/[slug]` con filtros por categoría y CTA hacia cotización.
-- **Cotización demo:** `/cotizar` con resumen estimado, cantidades y enlace WhatsApp prellenado.
-- **Stubs del sitemap:** Placeholders para `/eventos`, `/empresas`, `/tienda`, `/nosotros` y `/contacto`.
+- **Cotización demo:** `/cotizar` con resumen estimado, cantidades y enlace `wa.me` con texto (aún sin número de destino).
+- **Stubs del sitemap:** Placeholders para `/eventos`, `/empresas`, `/nosotros` y `/contacto`.
 - **Retiro de Tienda (dirección vigente):** Se eliminó “Tienda” de la navegación y
   del sitemap. La tarjeta “Tienda y combos” de la Home ahora invita a armar una
   cotización en `/cotizar`, y `/tienda` conserva una redirección permanente para
@@ -103,7 +123,7 @@ Este documento registra los avances significativos del proyecto MisterFiestas de
 ### Documentación de equipo y asistente WhatsApp
 
 - **Responsibilities.md:** matriz por persona, entregables, RACI y seguimiento semanal para Walen.
-- **Configuración de Entorno:** Se configuró el número de WhatsApp oficial en las variables de entorno locales (`.env.local`).
+- **WhatsApp:** el número de producción **no está en el repositorio**. `.env.example` deja `NEXT_PUBLIC_WHATSAPP_NUMBER` vacío; Fase 4 sigue bloqueada hasta que Sebastián + el dueño lo entreguen.
 - **WhatsApp-Assistant.md:** campos a recolectar, plantilla de mensaje, reglas UX, estado (Fase 4 pausada).
 - **Git-Workflow.md:** cada fase con responsable explícito (Walen / David / Sebastián / Mario).
 

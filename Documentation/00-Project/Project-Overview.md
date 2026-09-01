@@ -16,16 +16,21 @@ pausada).
 - Equipo: Walen, Sebastian, Mario y David.
 - Stack: Next.js en la raíz del repositorio; contenido estático tipado en `src/content/`.
 - Dirección de producto (ago. 2026): **landing informativa + WhatsApp**, sin e-commerce.
-- Prioridad comercial principal: **Túnel Infinito**.
+- Catálogo oficial en código (14 servicios publicados): fotografía/booths, mariachis y
+  temporada navideña. Ver [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md).
+- Prioridad comercial principal: **Túnel Infinito LED**.
 
 ## Alcance del sitio
 
-- **Servicios:** decoración, DJ, animación, catering, photobooth, inflables, sonido,
-  iluminación, túnel infinito, videobooth, efectos y más.
+- **Servicios publicados:** VideoBooth 360, booths (Cajita Negra, Selfie, Salsa),
+  Túnel Infinito LED, Túnel Espejado LED, mariachis (Express y Trío) y pack de
+  Navidad. Ítems legacy (DJ, catering, inflables, etc.) están `outOfCatalog`.
 - **Segmentos:** cumpleaños, bodas, baby showers, gender reveals, graduaciones y
   eventos empresariales.
-- **Secciones:** inicio, servicios, eventos, empresas, galería, nosotros y contacto.
-- **Conversión:** botones al asistente y enlaces `wa.me` con mensaje prellenado (fecha, servicios, datos).
+- **Secciones:** inicio, servicios, cotizar, eventos, empresas, galería, nosotros y
+  contacto. `/tienda` redirige a `/cotizar`.
+- **Conversión:** asistente en `/cotizar` y calendario en Home. El cierre `wa.me`
+  unificado (número + plantilla) está **pausado** en Fase 4.
 - **Experiencia:** entrada desde Google, propuesta clara, navegación visual,
   animaciones de scroll, fotos y confianza (testimonios, galería).
 

@@ -43,9 +43,11 @@ entregables y seguimiento para Walen).
 
 **Rol:** Datos del catálogo y contenido estructurado
 
-- **Enfoque MVP:** `src/content/services.ts`, catálogo documentado, slugs y tipos
-- **Herramientas:** TypeScript, Markdown, diagramas ER (post-MVP)
-- **Entregables clave:** tabla de servicios completa, código alineado con [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md)
+- **Enfoque MVP:** mantener `src/content/services.ts` y
+  [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md) alineados (catálogo
+  oficial ya cargado por Sebastián)
+- **Herramientas:** TypeScript, Markdown
+- **Entregables clave:** tabla de servicios al día, slugs y tipos si el negocio cambia oferta
 - **Decisión final:** estructura y exactitud de los datos de servicios en repo
 
 ---

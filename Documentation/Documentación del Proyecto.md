@@ -40,3 +40,7 @@ ni backend en el MVP.
   - [API (diferida)](04-Architecture/API-Contract.md)
   - [Integraciones](04-Architecture/Integrations-and-Secrets.md)
   - [Decisiones](04-Architecture/Decisions.md)
+- **Legal y contenido:**
+  - [Acuerdo de autorización](05-Legal/Content-Authorization-Agreement.md)
+  - [Cumplimiento legal y contenido](05-Legal/Legal-and-Content-Compliance.md)
+  - [Procedimiento del proyecto](05-Legal/Legal-Project-Procedure.md)

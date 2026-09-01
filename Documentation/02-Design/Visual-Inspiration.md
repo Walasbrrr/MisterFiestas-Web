@@ -17,4 +17,5 @@ Esta referencia orienta la presentación de socios y clientes autorizados en la 
 3. ![Inspiración visual 3](assets/inspiration-03.png)
    _Nota de implementación:_ Referencia para la jerarquía tipográfica, el uso de "eyebrows" sobre los títulos principales y el contraste con fondos oscuros.
 4. ![Referencia de animación de scroll](assets/scroll-animation-reference.png)
-   _Nota de implementación:_ Destaca el tratamiento de micro-interacciones. Se planea usar `motion` para replicar animaciones sutiles al hacer scroll por el catálogo de servicios.
+   _Nota de implementación:_ Micro-interacciones de scroll. En código se usa `motion`
+   (`Reveal`, `RevealStagger`, `RevealItem` en `src/components/reveal.tsx`).

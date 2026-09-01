@@ -16,7 +16,9 @@
 
 - La web **recolecta** datos; el **envío** ocurre cuando el usuario pulsa Enviar en WhatsApp.
 - Plantilla del mensaje: [WhatsApp-Assistant.md](../01-Product/WhatsApp-Assistant.md) (aprobar con Sebastián).
-- Implementación en código: Fase 4 **pausada** hasta tener número y plantilla.
+- Implementación en código: Fase 4 **pausada**. El número **no está configurado** en el
+  repositorio. `/cotizar` genera `wa.me/?text=…` sin destinatario.
+- No afirmar que el número vive en `.env.local` versionado: ese archivo no se commitea.
 
 ## Reglas
 
@@ -36,10 +38,14 @@
 
 ### Instagram — galería
 
-- Sebastián coordina el material visual y los accesos autorizados del negocio.
-- Walen evaluará la integración técnica antes de comprometer el diseño con una API concreta.
-- La galería debe admitir imágenes cargadas manualmente; Instagram es una fuente posible, no una dependencia obligatoria.
-- Tokens o credenciales de Instagram nunca se guardan en Markdown ni en variables `NEXT_PUBLIC_`.
+- Implementación en `backend/` (Mario, v0.1): Graph API → cache en BD →
+  `GET /api/v1/gallery`. El frontend usa `NEXT_PUBLIC_API_URL`.
+- Si la API no responde, `/galeria` muestra ejemplos locales (`src/content/gallery-demo.ts`).
+- Instagram no es dependencia obligatoria para publicar la landing.
+- Tokens (`INSTAGRAM_ACCESS_TOKEN`, `INSTAGRAM_USER_ID`) viven en `backend/.env`,
+  nunca en Markdown ni en variables `NEXT_PUBLIC_`.
+- `POST /api/v1/gallery/sync` está público en desarrollo; hay que restringirlo
+  antes de producción.
 
 ### Google Maps — testimonios
 
@@ -51,4 +57,8 @@
 
 - Pasarelas de pago (Stripe, Azul, CardNET).
 - WhatsApp Business API.
-- Backend y webhooks.
+- Persistencia de leads y webhooks.
+
+Las claves `STRIPE_*`, `AZUL_*`, `CARDNET_*`, `DATABASE_URL` y `JWT_SECRET` en
+`.env.example` corresponden a ese futuro. `NEXT_PUBLIC_API_URL` sí se usa para
+la galería (opcional).

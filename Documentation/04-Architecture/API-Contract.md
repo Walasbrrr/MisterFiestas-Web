@@ -1,14 +1,26 @@
-# Contrato de API (Borrador — diferido)
+# Contrato de API
 
-> **Estado:** No aplica al MVP actual. La landing no consume API; la conversión es
-> por WhatsApp. Este documento se conserva como referencia si más adelante se
-> implementa `backend/` (Spring Boot + PostgreSQL).
+> **Estado:** la landing **no** usa API para cotizar (WhatsApp). Sí puede consumir
+> galería si `NEXT_PUBLIC_API_URL` apunta a `backend/` (Spring Boot). El resto
+> de este documento sigue siendo borrador.
 
-URL base prevista (desarrollo): `http://localhost:8080/api/v1`
+URL base (desarrollo): `http://localhost:8080/api/v1`
 
 ---
 
-## 1. Servicios
+## 0. Galería (implementado)
+
+| Método | Ruta            | Acceso                                  | Descripción                                       |
+| ------ | --------------- | --------------------------------------- | ------------------------------------------------- |
+| `GET`  | `/gallery`      | Público                                 | Página de medios cacheados (`?page=&size=&type=`) |
+| `GET`  | `/gallery/{id}` | Público                                 | Detalle por ID de Instagram                       |
+| `POST` | `/gallery/sync` | Público en dev — **restringir en prod** | Fuerza sync con Graph API                         |
+
+Tipos: `IMAGE`, `VIDEO`, `CAROUSEL_ALBUM`, `ALL`. Detalle en `backend/README.md`.
+
+---
+
+## 1. Servicios (borrador — no implementado)
 
 ### `GET /services`
 
@@ -19,9 +31,9 @@ Lista de servicios activos (sustituiría `src/content/services.ts` si hubiera CM
   "data": [
     {
       "slug": "tunel-infinito",
-      "name": "Túnel Infinito",
+      "name": "Túnel Infinito LED",
       "description": "...",
-      "priceFrom": 15000.0
+      "priceFrom": 29995.0
     }
   ]
 }

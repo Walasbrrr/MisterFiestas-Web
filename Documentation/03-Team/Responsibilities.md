@@ -60,15 +60,15 @@ contenido esté aprobado.
 
 **Objetivo:** conseguir y aprobar con el negocio el material real que debe publicarse.
 
-| Tarea                                                                                        | Entregable                                    | Estado                         |
-| -------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------ |
-| Material visual real y accesos autorizados del negocio                                       | Assets y permisos confirmados                 | Pendiente                      |
-| Coordinar investigación de Instagram con Walen                                               | Fuente viable o decisión de usar carga manual | En evaluación                  |
-| Cargar manualmente imágenes no cubiertas por Instagram                                       | Archivos organizados en `public/images/`      | Pendiente                      |
-| Evaluar Google Maps como fuente de testimonios reales                                        | Viabilidad, acceso y atribución documentados  | Por confirmar                  |
-| Número WhatsApp del negocio para producción                                                  | Valor para `NEXT_PUBLIC_WHATSAPP_NUMBER`      | **Pendiente — bloquea Fase 4** |
-| Aprobar plantilla de mensaje en [WhatsApp-Assistant.md](../01-Product/WhatsApp-Assistant.md) | Texto final con el dueño                      | Pendiente                      |
-| Textos Nosotros, FAQ y precios «desde» o «consultar»                                         | Contenido comercial aprobado                  | Pendiente                      |
+| Tarea                                                                                        | Entregable                                                                                 | Estado                         |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------ |
+| Material visual real y accesos autorizados del negocio                                       | Assets y permisos confirmados                                                              | Pendiente                      |
+| Coordinar investigación de Instagram con Walen                                               | Fuente viable o decisión de usar carga manual                                              | En evaluación                  |
+| Cargar manualmente imágenes no cubiertas por Instagram                                       | Archivos organizados en `public/images/`                                                   | Pendiente                      |
+| Evaluar Google Maps como fuente de testimonios reales                                        | Viabilidad, acceso y atribución documentados                                               | Por confirmar                  |
+| Número WhatsApp del negocio para producción                                                  | Valor para `NEXT_PUBLIC_WHATSAPP_NUMBER` (no está en el repo; `.env.local` no se commitea) | **Pendiente — bloquea Fase 4** |
+| Aprobar plantilla de mensaje en [WhatsApp-Assistant.md](../01-Product/WhatsApp-Assistant.md) | Texto final con el dueño                                                                   | Pendiente                      |
+| Textos Nosotros, FAQ y precios «desde» o «consultar»                                         | Contenido comercial aprobado                                                               | Pendiente                      |
 
 **No es su foco en el MVP:** implementar APIs o el helper WhatsApp; eso corresponde a Walen.
 
@@ -80,12 +80,13 @@ contenido esté aprobado.
 
 **Objetivo:** que el catálogo en código coincida con la operación aprobada.
 
-| Tarea                                                                        | Entregable                                | Estado          |
-| ---------------------------------------------------------------------------- | ----------------------------------------- | --------------- |
-| Completar [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md)     | Tabla con todos los servicios reales      | En curso        |
-| Actualizar `src/content/services.ts`                                         | Slugs, nombres, descripciones, categorías | Pendiente       |
-| Alinear slugs con rutas `/servicios/[slug]`                                  | Sin enlaces rotos                         | Pendiente       |
-| Mantener [Data-Model.md](../04-Architecture/Data-Model.md) si cambian campos | Doc actualizada                           | Según necesidad |
+| Tarea                                                                        | Entregable                               | Estado                           |
+| ---------------------------------------------------------------------------- | ---------------------------------------- | -------------------------------- |
+| Completar [Catalog-and-Pricing.md](../01-Product/Catalog-and-Pricing.md)     | Tabla alineada a `services.ts`           | Hecho (ago. 2026)                |
+| Actualizar `src/content/services.ts`                                         | 14 servicios publicados + `outOfCatalog` | Hecho (Sebastián)                |
+| Alinear slugs con rutas `/servicios/[slug]`                                  | Fichas y listado coinciden               | Hecho                            |
+| Mantener [Data-Model.md](../04-Architecture/Data-Model.md) si cambian campos | Doc al día con `src/types/service.ts`    | Hecho; revisar si cambian campos |
+| Combos/paquetes si el negocio los aprueba                                    | No hay página publicada                  | Pendiente                        |
 
 **Commits esperados:** `src/content/`, `src/types/` y tablas de producto en documentación.
 

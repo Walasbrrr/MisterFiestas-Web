@@ -65,6 +65,7 @@ git push origin main
 
 - No crear ramas `feature/`, `fix/` ni `docs/` para el flujo normal.
 - No hacer push a `main` si no eres Walen.
+- **No hacer force-push** a `dev` ni a `main`. GitHub lo rechaza.
 - No ocultar ni ignorar un fallo de CI: debe quedar identificada la causa.
 - No promover `dev` a `main` con CI rojo.
 

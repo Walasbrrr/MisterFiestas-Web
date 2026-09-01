@@ -7,4 +7,3 @@ out/
 *.tsbuildinfo
 .DS_Store
 .obsidian/
-*.docx
