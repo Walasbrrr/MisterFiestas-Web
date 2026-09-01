@@ -1,0 +1,4 @@
+.next/
+node_modules/
+pnpm-lock.yaml
+Documentation/02-Design/assets/

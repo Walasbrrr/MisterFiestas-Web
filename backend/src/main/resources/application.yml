@@ -1,0 +1,53 @@
+# =============================================================
+# Mister Fiestas API — Configuración Principal
+# =============================================================
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mister-fiestas-api
+
+  # --- Base de datos ---
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/mister_fiestas}
+    username: ${DB_USER:mister_fiestas}
+    password: ${DB_PASSWORD:change-me}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  # --- Flyway ---
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+# --- Instagram Graph API ---
+instagram:
+  user-id: ${INSTAGRAM_USER_ID:}
+  access-token: ${INSTAGRAM_ACCESS_TOKEN:}
+  api-version: ${INSTAGRAM_API_VERSION:v21.0}
+
+# --- CORS ---
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+
+# --- Swagger / OpenAPI ---
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# --- Actuator ---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

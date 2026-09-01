@@ -1,0 +1,31 @@
+# ============================================================
+# docker-compose.yml — Mister Fiestas Backend (Desarrollo)
+# ============================================================
+# Uso:
+#   docker-compose up -d          → Levanta PostgreSQL
+#   docker-compose down           → Detiene todo
+#   docker-compose down -v        → Detiene y borra datos
+# ============================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mf-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mister_fiestas
+      POSTGRES_USER: mister_fiestas
+      POSTGRES_PASSWORD: Comfybyte1
+    ports:
+      - "5432:5432"
+    volumes:
+      - mf_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mister_fiestas -d mister_fiestas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mf_pgdata:
+    driver: local

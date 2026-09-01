@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2200" viewBox="0 0 1440 2200">
+  <defs>
+    <linearGradient id="orb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C8FF2E" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#42D7E8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="coralGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF5A36" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#FF5A36" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="42"/></filter>
+    <style>
+      .display{font-family:Archivo,Arial,sans-serif;font-weight:900;letter-spacing:-4px}
+      .heading{font-family:Archivo,Arial,sans-serif;font-weight:800;letter-spacing:-2px}
+      .body{font-family:Geist,Inter,Arial,sans-serif}
+      .label{font-family:Geist,Inter,Arial,sans-serif;font-weight:600;letter-spacing:2px}
+      rect[fill="#070707"]{fill:#F1D3BA}text[fill="#070707"],path[fill="#070707"]{fill:#392D2A}[fill="#F4F0E8"]{fill:#FFF8F0}[fill="#FF5A36"]{fill:#EC6D20}
+      text[fill="#FF5A36"]{fill:#D72B2D}[fill="#C8FF2E"]{fill:#D72B2D}[fill="#FFC857"]{fill:#E4A15C}[fill="#42D7E8"]{fill:#D8A99E}
+      [fill="#B9B1A6"]{fill:#765F57}[stroke="#B9B1A6"]{stroke:#B88F79}
+      [stop-color="#C8FF2E"]{stop-color:#D8A99E}[stop-color="#42D7E8"]{stop-color:#FFF8F0}[stop-color="#FF5A36"]{stop-color:#EC6D20}
+      svg&gt;text[fill="#F4F0E8"]{fill:#392D2A}
+    </style>
+  </defs>
+
+  <rect width="1440" height="2200" fill="#070707"/>
+  <circle cx="1320" cy="80" r="360" fill="url(#orb)" filter="url(#blur)"/>
+  <circle cx="80" cy="790" r="230" fill="url(#coralGlow)" filter="url(#blur)"/>
+  <rect x="72" y="88" width="14" height="640" rx="7" fill="#FF5A36"/>
+
+  <text x="126" y="126" class="label" font-size="14" fill="#C8FF2E">WEB EXPERIENCE · DESIGN SYSTEM · V1</text>
+  <text x="126" y="286" class="display" font-size="118" fill="#F4F0E8">MISTER</text>
+  <text x="126" y="396" class="display" font-size="118" fill="#FF5A36">FIESTAS</text>
+  <text x="126" y="518" class="heading" font-size="52" fill="#F4F0E8">EVENTOS QUE SE VIVEN</text>
+  <text x="126" y="572" class="heading" font-size="52" fill="#C8FF2E">EN GRANDE.</text>
+  <text x="126" y="646" class="body" font-size="20" fill="#B9B1A6">Una experiencia digital diseñada para convertir energía, confianza</text>
+  <text x="126" y="677" class="body" font-size="20" fill="#B9B1A6">y momentos memorables en solicitudes de cotización.</text>
+  <rect x="1048" y="518" width="266" height="58" rx="29" fill="none" stroke="#B9B1A6"/>
+  <text x="1181" y="553" class="label" font-size="13" fill="#F4F0E8" text-anchor="middle">COTIZAR MI EVENTO ↗</text>
+  <text x="126" y="776" class="label" font-size="12" fill="#B9B1A6">TÚNEL INFINITO × MARIACHIS × COMBOS × EXPERIENCIAS B2B</text>
+
+  <line x1="72" y1="850" x2="1368" y2="850" stroke="#292623"/>
+  <text x="72" y="936" class="label" font-size="13" fill="#FF5A36">01 / DIRECCIÓN ARTÍSTICA</text>
+  <text x="72" y="1008" class="heading" font-size="58" fill="#F4F0E8">CELEBRACIÓN</text>
+  <text x="72" y="1064" class="heading" font-size="58" fill="#C8FF2E">EDITORIAL CÁLIDA.</text>
+  <text x="72" y="1124" class="body" font-size="18" fill="#B9B1A6">Cinematográfica, cálida y segura. Las fotos reales son protagonistas.</text>
+  <text x="72" y="1152" class="body" font-size="18" fill="#B9B1A6">El negro crea escenario; coral invita a actuar; lima comunica energía.</text>
+
+  <g transform="translate(760 910)">
+    <rect width="550" height="290" rx="28" fill="#0E0D0B" stroke="#292623"/>
+    <path d="M48 220 L160 86 L264 178 L362 60 L502 220 Z" fill="#181614"/>
+    <circle cx="420" cy="80" r="42" fill="#FFC857"/>
+    <rect x="34" y="34" width="156" height="30" rx="15" fill="#F4F0E8"/>
+    <circle cx="52" cy="49" r="5" fill="#FF5A36"/>
+    <text x="66" y="54" class="label" font-size="10" fill="#070707">MOMENTO REAL</text>
+    <text x="32" y="266" class="heading" font-size="29" fill="#F4F0E8">FOTOGRAFÍA CON PRESENCIA</text>
+  </g>
+
+  <line x1="72" y1="1274" x2="1368" y2="1274" stroke="#292623"/>
+  <text x="72" y="1354" class="label" font-size="13" fill="#FF5A36">02 / COLOR</text>
+  <text x="72" y="1415" class="heading" font-size="46" fill="#F4F0E8">CALIDEZ FESTIVA</text>
+  <g transform="translate(72 1460)">
+    <g><rect width="186" height="150" rx="18" fill="#070707" stroke="#292623"/><text x="18" y="112" class="label" font-size="11" fill="#F4F0E8">CHARCOAL</text><text x="18" y="134" class="body" font-size="12" fill="#B9B1A6">#2A2B2F</text></g>
+    <g transform="translate(204)"><rect width="186" height="150" rx="18" fill="#F4F0E8"/><text x="18" y="112" class="label" font-size="11" fill="#070707">CREAM</text><text x="18" y="134" class="body" font-size="12" fill="#292623">#F8F0E6</text></g>
+    <g transform="translate(408)"><rect width="186" height="150" rx="18" fill="#FF5A36"/><text x="18" y="112" class="label" font-size="11" fill="#070707">ORANGE</text><text x="18" y="134" class="body" font-size="12" fill="#292623">#EC6D20</text></g>
+    <g transform="translate(612)"><rect width="186" height="150" rx="18" fill="#C8FF2E"/><text x="18" y="112" class="label" font-size="11" fill="#070707">RED</text><text x="18" y="134" class="body" font-size="12" fill="#292623">#D72B2D</text></g>
+    <g transform="translate(816)"><rect width="186" height="150" rx="18" fill="#FFC857"/><text x="18" y="112" class="label" font-size="11" fill="#070707">HONEY</text><text x="18" y="134" class="body" font-size="12" fill="#292623">#E4A15C</text></g>
+    <g transform="translate(1020)"><rect width="186" height="150" rx="18" fill="#42D7E8"/><text x="18" y="112" class="label" font-size="11" fill="#070707">PEACH</text><text x="18" y="134" class="body" font-size="12" fill="#292623">#F1D3BA</text></g>
+  </g>
+
+  <line x1="72" y1="1680" x2="1368" y2="1680" stroke="#292623"/>
+  <text x="72" y="1760" class="label" font-size="13" fill="#FF5A36">03 / TIPOGRAFÍA</text>
+  <text x="72" y="1846" class="display" font-size="82" fill="#F4F0E8">ARCHIVO BLACK</text>
+  <text x="72" y="1900" class="body" font-size="20" fill="#B9B1A6">Geist sostiene la lectura, navegación, formularios y detalles funcionales.</text>
+
+  <g transform="translate(72 1980)">
+    <rect width="1296" height="140" rx="24" fill="#0E0D0B" stroke="#292623"/>
+    <text x="30" y="40" class="label" font-size="12" fill="#C8FF2E">MOVIMIENTO</text>
+    <text x="30" y="78" class="body" font-size="17" fill="#F4F0E8">Entrada inclinada → estabilización → expansión cinematográfica.</text>
+    <text x="30" y="108" class="body" font-size="15" fill="#B9B1A6">El movimiento guía atención y revela contenido; nunca bloquea la cotización.</text>
+    <circle cx="960" cy="70" r="12" fill="#FF5A36"/><line x1="978" y1="70" x2="1054" y2="70" stroke="#B9B1A6" stroke-width="2"/><circle cx="1072" cy="70" r="12" fill="#FFC857"/><line x1="1090" y1="70" x2="1166" y2="70" stroke="#B9B1A6" stroke-width="2"/><circle cx="1184" cy="70" r="12" fill="#C8FF2E"/>
+  </g>
+</svg>
