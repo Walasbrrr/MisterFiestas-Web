@@ -30,6 +30,11 @@ const instagramFilters = [
   { id: "CAROUSEL_ALBUM", label: "Álbumes" },
 ];
 
+const previewUrl = (item: ApiMediaItem) =>
+  item.mediaType === "VIDEO"
+    ? (item.thumbnailUrl ?? item.mediaUrl)
+    : item.mediaUrl;
+
 export function GalleryGrid() {
   const apiUrl = getPublicApiUrl();
   const [activeType, setActiveType] = useState("ALL");
@@ -100,11 +105,6 @@ export function GalleryGrid() {
       document.body.style.overflow = "";
     };
   }, [selectedItem]);
-
-  const previewUrl = (item: ApiMediaItem) =>
-    item.mediaType === "VIDEO"
-      ? (item.thumbnailUrl ?? item.mediaUrl)
-      : item.mediaUrl;
 
   const filteredDemo = useMemo(() => {
     if (activeDemoCategory === "all") return galleryDemoItems;
@@ -268,59 +268,61 @@ export function GalleryGrid() {
                 aria-modal="true"
                 aria-label={selectedDemo.title}
               >
-                <div className="lightbox-header">
-                  <div>
-                    <span className="chip">{selectedDemo.categoryLabel}</span>
-                    <h2 style={{ fontSize: 24, marginTop: 6 }}>
-                      {selectedDemo.title}
-                    </h2>
-                  </div>
-                  <button
-                    type="button"
-                    className="menu-toggle"
-                    onClick={() => setSelectedDemo(null)}
-                    aria-label="Cerrar vista previa"
-                  >
-                    <X aria-hidden="true" />
-                  </button>
-                </div>
-
                 <div className="lightbox-media">
                   <Sparkles aria-hidden="true" />
                 </div>
 
-                <div className="lightbox-body">
-                  <p>{selectedDemo.description}</p>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      flexWrap: "wrap",
-                      gap: 12,
-                      paddingTop: 12,
-                      borderTop: "1px solid rgb(223 192 178 / 40%)",
-                    }}
-                  >
-                    <span
+                <div className="lightbox-content">
+                  <div className="lightbox-header">
+                    <div>
+                      <span className="chip">{selectedDemo.categoryLabel}</span>
+                      <h2 style={{ fontSize: 24, marginTop: 6 }}>
+                        {selectedDemo.title}
+                      </h2>
+                    </div>
+                    <button
+                      type="button"
+                      className="menu-toggle"
+                      onClick={() => setSelectedDemo(null)}
+                      aria-label="Cerrar vista previa"
+                    >
+                      <X aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  <div className="lightbox-body">
+                    <p>{selectedDemo.description}</p>
+                    <div
                       style={{
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: "var(--taupe)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: 12,
+                        paddingTop: 12,
+                        borderTop: "1px solid rgb(223 192 178 / 40%)",
                       }}
                     >
-                      Evento: {selectedDemo.highlightTag}
-                    </span>
-                    <Link
-                      className="button button-small"
-                      href={
-                        selectedDemo.serviceSlug
-                          ? `/cotizar?add=${selectedDemo.serviceSlug}`
-                          : "/cotizar"
-                      }
-                    >
-                      Cotizar este servicio <ArrowRight aria-hidden="true" />
-                    </Link>
+                      <span
+                        style={{
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: "var(--taupe)",
+                        }}
+                      >
+                        Evento: {selectedDemo.highlightTag}
+                      </span>
+                      <Link
+                        className="button button-small"
+                        href={
+                          selectedDemo.serviceSlug
+                            ? `/cotizar?add=${selectedDemo.serviceSlug}`
+                            : "/cotizar"
+                        }
+                      >
+                        Cotizar este servicio <ArrowRight aria-hidden="true" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -386,11 +388,7 @@ export function GalleryGrid() {
                   setSelectedMedia(item);
                 }
               }}
-              style={{
-                cursor: "pointer",
-                position: "relative",
-                overflow: "hidden",
-              }}
+              style={{ cursor: "pointer" }}
             >
               <div
                 style={{
@@ -403,56 +401,15 @@ export function GalleryGrid() {
                 }}
                 aria-hidden="true"
               />
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)",
-                }}
-                aria-hidden="true"
-              />
+              <div className="gallery-card-scrim" aria-hidden="true" />
               {item.mediaType === "VIDEO" && (
-                <span
-                  style={{
-                    position: "absolute",
-                    top: 10,
-                    right: 10,
-                    background: "rgba(0,0,0,0.6)",
-                    color: "#fff",
-                    fontSize: 10,
-                    fontWeight: 700,
-                    padding: "2px 7px",
-                    borderRadius: 999,
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  VIDEO
-                </span>
+                <span className="gallery-card-badge">Video</span>
               )}
               {item.mediaType === "CAROUSEL_ALBUM" && (
-                <span
-                  style={{
-                    position: "absolute",
-                    top: 10,
-                    right: 10,
-                    background: "rgba(0,0,0,0.6)",
-                    color: "#fff",
-                    fontSize: 10,
-                    fontWeight: 700,
-                    padding: "2px 7px",
-                    borderRadius: 999,
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  ÁLBUM
-                </span>
+                <span className="gallery-card-badge">Álbum</span>
               )}
 
-              <div
-                className="gallery-card-content"
-                style={{ position: "relative", zIndex: 1 }}
-              >
+              <div className="gallery-card-overlay">
                 <div
                   style={{
                     display: "flex",
@@ -482,20 +439,7 @@ export function GalleryGrid() {
                   </span>
                 </div>
                 {item.caption && (
-                  <p
-                    style={{
-                      margin: "6px 0 0",
-                      fontSize: 12,
-                      color: "#fff",
-                      lineHeight: 1.4,
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {item.caption}
-                  </p>
+                  <p className="gallery-card-overlay-caption">{item.caption}</p>
                 )}
               </div>
             </article>
@@ -523,92 +467,76 @@ export function GalleryGrid() {
               aria-modal="true"
               aria-label="Detalle del post de Instagram"
             >
-              <div className="lightbox-header">
-                <div>
-                  <span className="chip">Instagram</span>
-                  <h2 style={{ fontSize: 18, marginTop: 6 }}>
-                    {selectedMedia.caption
-                      ? selectedMedia.caption.slice(0, 60) +
-                        (selectedMedia.caption.length > 60 ? "…" : "")
-                      : "Post de Mister Fiestas"}
-                  </h2>
-                </div>
-                <button
-                  type="button"
-                  className="menu-toggle"
-                  onClick={() => setSelectedMedia(null)}
-                  aria-label="Cerrar vista previa"
-                >
-                  <X aria-hidden="true" />
-                </button>
-              </div>
-
-              <div
-                className="lightbox-media"
-                style={{
-                  padding: 0,
-                  overflow: "hidden",
-                  borderRadius: 8,
-                  maxHeight: 420,
-                }}
-              >
+              <div className="lightbox-media">
                 {selectedMedia.mediaType === "VIDEO" ? (
                   <video
+                    key={selectedMedia.id}
                     src={selectedMedia.mediaUrl}
                     poster={selectedMedia.thumbnailUrl ?? undefined}
                     controls
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
                   />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
+                    key={selectedMedia.id}
                     src={previewUrl(selectedMedia)}
                     alt={selectedMedia.caption ?? "Post de Mister Fiestas"}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
                   />
                 )}
               </div>
 
-              <div className="lightbox-body">
-                {selectedMedia.caption && <p>{selectedMedia.caption}</p>}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                    gap: 12,
-                    paddingTop: 12,
-                    borderTop: "1px solid rgb(223 192 178 / 40%)",
-                  }}
-                >
-                  <span
+              <div className="lightbox-content">
+                <div className="lightbox-header">
+                  <div>
+                    <span className="chip">Instagram</span>
+                    <h2 style={{ fontSize: 18, marginTop: 6 }}>
+                      {selectedMedia.caption
+                        ? selectedMedia.caption.slice(0, 60) +
+                          (selectedMedia.caption.length > 60 ? "…" : "")
+                        : "Post de Mister Fiestas"}
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    className="menu-toggle"
+                    onClick={() => setSelectedMedia(null)}
+                    aria-label="Cerrar vista previa"
+                  >
+                    <X aria-hidden="true" />
+                  </button>
+                </div>
+
+                <div className="lightbox-body">
+                  {selectedMedia.caption && <p>{selectedMedia.caption}</p>}
+                  <div
                     style={{
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "var(--taupe)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      flexWrap: "wrap",
+                      gap: 12,
+                      paddingTop: 12,
+                      borderTop: "1px solid rgb(223 192 178 / 40%)",
                     }}
                   >
-                    ❤️ {selectedMedia.likeCount} me gusta
-                  </span>
-                  <a
-                    className="button button-small"
-                    href={selectedMedia.permalink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Ver en Instagram
-                  </a>
+                    <span
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: "var(--taupe)",
+                      }}
+                    >
+                      ❤️ {selectedMedia.likeCount} me gusta
+                    </span>
+                    <a
+                      className="button button-small"
+                      href={selectedMedia.permalink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ver en Instagram
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

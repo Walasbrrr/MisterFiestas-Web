@@ -1811,7 +1811,7 @@ h4 {
   flex-direction: column;
   justify-content: flex-end;
   min-height: 280px;
-  padding: 24px;
+  padding: 0;
   background: linear-gradient(145deg, var(--peach), var(--peach-deep));
   border: 1px solid rgb(223 192 178 / 55%);
   border-radius: 24px;
@@ -1844,6 +1844,40 @@ h4 {
   opacity: 0.35;
 }
 
+/* Warm duotone scrim so real photos/video thumbnails read as part of the
+   brand instead of a generic dark overlay. */
+.gallery-card-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(57 45 42 / 0%) 40%,
+    rgb(57 45 42 / 55%) 75%,
+    rgb(57 45 42 / 92%) 100%
+  );
+}
+
+.gallery-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgb(57 45 42 / 55%);
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  color: var(--cream-bright);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .gallery-card-content {
   position: relative;
   z-index: 1;
@@ -1865,6 +1899,30 @@ h4 {
   line-height: 1.15;
 }
 
+/* Photo/video thumbnail cards (real Instagram media): caption sits directly
+   on the warm scrim instead of a frosted panel, so the photo stays visible. */
+.gallery-card-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 16px;
+  color: var(--cream-bright);
+}
+
+.gallery-card-overlay .chip {
+  background: rgb(248 240 230 / 92%);
+}
+
+.gallery-card-overlay-caption {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--cream-bright);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Lightbox Modal */
 .lightbox-backdrop {
   position: fixed;
@@ -1880,7 +1938,10 @@ h4 {
 
 .lightbox-modal {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: min(100%, 720px);
+  max-height: 90vh;
   background: var(--cream-bright);
   border: 1px solid rgb(223 192 178 / 60%);
   border-radius: 28px;
@@ -1888,21 +1949,37 @@ h4 {
   box-shadow: 0 24px 60px rgb(0 0 0 / 35%);
 }
 
-.lightbox-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  border-bottom: 1px solid rgb(223 192 178 / 45%);
+@media (min-width: 860px) {
+  .lightbox-modal {
+    flex-direction: row;
+    align-items: stretch;
+    width: auto;
+    min-width: 480px;
+    max-width: min(94vw, 980px);
+    max-height: min(85vh, 640px);
+  }
 }
 
+/* Shrink-wraps around the video/image instead of forcing it into a fixed
+   box: a vertical clip ends up in a tall, narrow panel and a landscape one
+   in a wide, short panel, so there's no grey letterboxing to speak of. The
+   min-height/min-width floors only matter for the icon-only demo preview. */
 .lightbox-media {
-  min-height: 340px;
+  position: relative;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, var(--peach), var(--peach-deep));
+  background: var(--espresso);
   color: var(--orange);
-  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+@media (min-width: 860px) {
+  .lightbox-media {
+    align-self: center;
+    min-height: 320px;
+    min-width: 280px;
+  }
 }
 
 .lightbox-media svg {
@@ -1910,11 +1987,58 @@ h4 {
   height: 96px;
 }
 
+/* width/height stay auto so the element keeps its real intrinsic aspect
+   ratio; only the outer bound is capped (in viewport units, so it never
+   depends on the shrink-wrapping parent's own size). */
+.lightbox-media img,
+.lightbox-media video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(88vw, 640px);
+  max-height: min(60vh, 480px);
+  object-fit: contain;
+}
+
+@media (min-width: 860px) {
+  .lightbox-media img,
+  .lightbox-media video {
+    max-width: min(56vw, 620px);
+    max-height: min(80vh, 620px);
+  }
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+@media (min-width: 860px) {
+  .lightbox-content {
+    flex: 1 1 42%;
+    min-width: 260px;
+    max-width: 380px;
+    overflow-y: auto;
+    border-left: 1px solid rgb(223 192 178 / 45%);
+  }
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgb(223 192 178 / 45%);
+}
+
 .lightbox-body {
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  overflow-y: auto;
 }
 
 .lightbox-body p {
